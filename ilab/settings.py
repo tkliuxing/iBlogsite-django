@@ -11,12 +11,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'ilab',                      # Or path to database file if using sqlite3.
-        'USER': 'b',                      # Not used with sqlite3.
-        'PASSWORD': 'squarenix',                  # Not used with sqlite3.
-        'HOST': '10.211.55.9',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ilab',
+        'USER': 'b',
+        'PASSWORD': 'squarenix',
+        'HOST': '10.211.55.9',
+        'PORT': '5432',
     }
 }
 
@@ -58,7 +58,8 @@ MEDIA_URL = '%s/media/' % SITE_DOMAIN
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''#'/home/b/Code/website/iLab/static'
+STATIC_ROOT = ''
+#'/home/b/Code/website/iLab/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -77,7 +78,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -87,7 +88,7 @@ SECRET_KEY = '00s8#qwl&amp;%ejc@sdufjyod+f+ct-dxh8oi(a*w64kzkhygwo+s'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -162,7 +163,5 @@ LOGGING = {
 LESS_OUTPUT_DIR = 'assets'
 #LESS_STATIC_ROOT = STATIC_ROOT
 LESS_BUILD_DIR = '/home/b/Code/website/iLab/ilab/static'
-# ASSETS_ROOT = '/home/b/Code/website/iLab/ilab/static'
-# ASSETS_URL = '%s/staticassets' % SITE_DOMAIN
-# ASSETS_DEBUG = False
-# ASSETS_AUTO_BUILD = True
+
+MARKDOWN_EDITOR_SKIN = 'simple'
