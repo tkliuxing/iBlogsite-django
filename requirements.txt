@@ -1,0 +1,15 @@
+Django==1.4.1
+Markdown==2.2.0
+Pygments==1.5
+South==0.7.6
+autopep8==0.7.3
+bpython==0.11
+buildutils==0.3
+django-json-field==0.4
+django-markdown==0.1.0
+docutils==0.9.1
+gunicorn==0.14.6
+psycopg2==2.4.5
+python-dateutil==2.1
+simplejson==2.6.1
+-e git+https://github.com/thagat/django-less.git#egg=django-less
