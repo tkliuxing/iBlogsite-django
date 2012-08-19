@@ -9,6 +9,7 @@ urlpatterns = patterns(
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^markdown/', include('django_markdown.urls')),
+    url(r'^tags/', include('universaltag.urls')),
 )
 
 from django.conf import settings

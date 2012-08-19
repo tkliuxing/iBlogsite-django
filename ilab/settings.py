@@ -167,3 +167,4 @@ LESS_OUTPUT_DIR = 'assets'
 LESS_BUILD_DIR = '/home/b/Code/website/iLab/ilab/static'
 
 MARKDOWN_EDITOR_SKIN = 'simple'
+UNIVERSALTAG_AUTHOR_ATTRS = 'user'
