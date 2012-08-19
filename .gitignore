@@ -2,4 +2,5 @@
 ilab/static/bootstrap/docs/build
 ilab/static/bootstrap/js/tests
 iLabProject.egg-info
+*.pyc
 ._.*

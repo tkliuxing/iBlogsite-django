@@ -1,5 +1,6 @@
 Django==1.4.1
 Markdown==2.2.0
+markdown2==2.0.1
 Pygments==1.5
 South==0.7.6
 autopep8==0.7.3
@@ -12,4 +13,5 @@ gunicorn==0.14.6
 psycopg2==2.4.5
 python-dateutil==2.1
 simplejson==2.6.1
+-e git+https://github.com/tkliuxing/django-universaltag.git#egg=django-universaltag
 -e git+https://github.com/thagat/django-less.git#egg=django-less

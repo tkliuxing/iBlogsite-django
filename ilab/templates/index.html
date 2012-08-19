@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load md2 %}
 {% block title %}首页{% endblock %}
 {% block navbar %}
 <a class="brand" href="#">iLab</a>
@@ -16,7 +17,17 @@
 {% block container %}
 <div class="row">
 	<div class="span8">
-		
+		{% for blog in blogs %}
+		<div class="well">
+			<div class="alert alert-message">
+				<h2>{{blog.title}}</h2>
+			</div>
+			<div class="alert alert-success">
+				{{blog.content|markdown2:"safe, code-friendly, code-color"}}
+			</div>
+			<div class="alert alert-info"><strong>{{blog.user}}</strong> at <strong>{{blog.create_time|date:"Y-m-d"}}</strong></div>
+		</div>
+		{% empty %}
 		<div class="well">
 			<div class="alert alert-message">
 				<h2>Hello!</h2>
@@ -26,6 +37,7 @@
 			</div>
 			<div class="alert alert-info"><strong>A</strong> at <strong>2012-08-18</strong></div>
 		</div>
+		{% endfor %}
 		<div class="pagination">
 			<ul>
 				<li>

@@ -97,6 +97,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    #'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -120,15 +121,16 @@ INSTALLED_APPS = (
     #'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
+    #'django.contrib.flatpages',
+    'django.contrib.admindocs',
     'django.contrib.admin',
     'south',
     'json_field',
     'less',
     'django_markdown',
-    'ilab.mytask',
-    # Uncomment the next line to enable admin documentation:
-    'django.contrib.admindocs',
+    'universaltag',
+    #'ilab.mytask',
+    'ilab.blog',
 )
 
 # A sample logging configuration. The only tangible logging
