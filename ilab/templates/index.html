@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 {% load md2 universaltag_tags %}
 {% block title %}首页{% endblock %}
-{% block head %}{% render_universaltag_head %}{% endblock %}
+
+{% block head %}
+	{% if request.user.is_authenticated %}
+		{% render_universaltag_head %}
+	{% else %}
+		<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/django.universaltag.css">
+	{% endif %}
+{% endblock %}
+
 {% block navbar %}
-<a class="brand" href="#">iLab</a>
+<a class="brand" href="#">{{SITE_ENV.SITE_NAME}}</a>
 <div class="nav-collapse">
 	<ul class="nav">
 		<li class="active">
@@ -26,11 +34,27 @@
 			<div class="alert alert-message">
 				{{blog.content|markdown2:"safe, code-friendly, code-color"}}
 			</div>
-			<div class="alert alert-info">
-				<strong>{{blog.user}}</strong> at <strong>{{blog.create_time|date:"Y-m-d"}}</strong>
-			</div>
-			<div class="alert alert-info">
-				Tags:{% render_universaltag_tags of blog %}
+			<div class="well">
+				<div class="note date">
+					<strong>{{blog.user}}</strong> at <strong>{{blog.create_time|date:"Y-m-d"}}</strong>
+				</div>
+				<hr/>
+				<div>
+					Tags:
+					{% if not request.user.is_authenticated %}
+					<div class="universaltag">
+						<ul class="universaltag ui-sortable">
+							{% for tag in blog.tags.all %}
+							<li class="tag frozen" pk="{{tag.pk}}">
+								<a href="{{tag.tag.get_absolute_url}}">{{tag.tag}}</a>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+					{% else %}
+					{% render_universaltag_tags of blog %}
+					{% endif %}
+				</div>
 			</div>
 		</div>
 		{% empty %}

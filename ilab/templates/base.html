@@ -3,7 +3,7 @@
 <html lang="zh-cn">
 <head>
 	<meta charset="utf-8">
-	<title>iLab - {% block title %}{% endblock %}</title>
+	<title>{{SITE_ENV.SITE_NAME}} - {% block title %}{% endblock %}</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<link rel="stylesheet" href="{{ STATIC_URL }}{% less "bootstrap/less/bootstrap.less" %}" type="text/css" />
 	<link rel="stylesheet" href="{{ STATIC_URL }}{% less "css/main.less" %}" type="text/css" />
