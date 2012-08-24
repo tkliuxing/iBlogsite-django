@@ -15,5 +15,4 @@ def homepage(request):
         page = p.page(1)
     C['blogs'] = page.object_list
     C['pagination'] = page
-    C['request'] = request
     return render_to_response('index.html', C, context_instance=RequestContext(request))

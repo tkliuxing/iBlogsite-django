@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load md2 universaltag_tags gravatar %}
+{% block title %}首页{% endblock %}
+
+{% block head %}
+	{% if request.user.is_authenticated %}
+		{% render_universaltag_head %}
+	{% else %}
+		<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/django.universaltag.css">
+	{% endif %}
+{% endblock %}
+
+{% block container %}
+<div class="row">
+	<div class="span4">
+		<div class="well">We are one</div>
+	</div>
+	<div class="span8">
+		<div class="well">
+			<div class="alert alert-success">
+				<h2>{{blog.title}}</h2>
+			</div>
+			<div class="alert alert-message">
+				{{blog.content|markdown2:"safe, code-friendly, code-color"}}
+			</div>
+			<div class="well">
+				<div class="note date">
+					{% gravatar user.email 40 %}
+					<strong>{{blog.user}}</strong> at <strong>{{blog.create_time|date:"Y-m-d H:i:s"}}</strong>
+					<a class="note">留言:(0)</a>
+				</div>
+				<hr/>
+				<div>
+					{% if not request.user.is_authenticated %}
+					<div class="universaltag">
+						<ul class="universaltag ui-sortable">
+							{% for tag in blog.tags.all %}
+							<li class="tag frozen" pk="{{tag.pk}}">
+								<a href="{{tag.tag.get_absolute_url}}">{{tag.tag}}</a>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+					{% else %}
+					{% render_universaltag_tags of blog %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

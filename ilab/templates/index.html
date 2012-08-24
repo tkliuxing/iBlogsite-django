@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load md2 universaltag_tags %}
+{% load md2 universaltag_tags gravatar %}
 {% block title %}首页{% endblock %}
 
 {% block head %}
@@ -10,19 +10,6 @@
 	{% endif %}
 {% endblock %}
 
-{% block navbar %}
-<a class="brand" href="#">{{SITE_ENV.SITE_NAME}}</a>
-<div class="nav-collapse">
-	<ul class="nav">
-		<li class="active">
-			<a href="#">首页</a>
-		</li>
-	</ul>
-	<form class="navbar-search pull-left">
-		<input type="text" class="search-query" placeholder="Search">
-	</form>
-</div>
-{% endblock %}
 {% block container %}
 <div class="row">
 	<div class="span8">
@@ -34,38 +21,42 @@
 			<div class="alert alert-message">
 				{{blog.content|markdown2:"safe, code-friendly, code-color"}}
 			</div>
-			<div class="well">
-				<div class="note date">
-					<strong>{{blog.user}}</strong> at <strong>{{blog.create_time|date:"Y-m-d"}}</strong>
-				</div>
-				<hr/>
-				<div>
-					Tags:
-					{% if not request.user.is_authenticated %}
-					<div class="universaltag">
-						<ul class="universaltag ui-sortable">
-							{% for tag in blog.tags.all %}
-							<li class="tag frozen" pk="{{tag.pk}}">
-								<a href="{{tag.tag.get_absolute_url}}">{{tag.tag}}</a>
-							</li>
-							{% endfor %}
-						</ul>
+			<div class="well note date">
+					{% gravatar blog.user.email 40%}
+					<div class="date">
+						<p>{{blog.user}}</p>
+						<p>{{blog.create_time|date:"Y-m-d H:i:s"}}</p>
 					</div>
-					{% else %}
-					{% render_universaltag_tags of blog %}
-					{% endif %}
+					<a class="btn btn-success">
+						<i class="icon-comment"> </i>
+						评论({{blog.discuess.count}})
+					</a>
+			</div>
+			<div class="well tags">
+				{% if not request.user.is_authenticated %}
+				<div class="universaltag">
+					<ul class="universaltag ui-sortable">
+						{% for tag in blog.tags.all %}
+						<li class="tag frozen" pk="{{tag.pk}}">
+							<a href="{{tag.tag.get_absolute_url}}">{{tag.tag}}</a>
+						</li>
+						{% endfor %}
+					</ul>
 				</div>
+				{% else %}
+				{% render_universaltag_tags of blog %}
+				{% endif %}
 			</div>
 		</div>
 		{% empty %}
 		<div class="well">
 			<div class="alert alert-success">
-				<h2>Hello!</h2>
+				<h2>Hello world!</h2>
 			</div>
 			<div class="alert alert-message">
-				内容
+				This is new blog site.
 			</div>
-			<div class="alert alert-info"><strong>A</strong> at <strong>2012-08-18</strong></div>
+			<div class="alert alert-info"><strong>Someone</strong> at <strong>Today</strong></div>
 		</div>
 		{% endfor %}
 		{% if pagination.has_other_pages %}

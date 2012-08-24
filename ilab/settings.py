@@ -101,6 +101,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
     "ilab.context_processors.site_env",
+    "ilab.context_processors.request",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -141,8 +142,10 @@ INSTALLED_APPS = (
     'less',
     'django_markdown',
     'universaltag',
+    'django_gravatar',
     #'ilab.mytask',
     'ilab.blog',
+    'ilab.homepage',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -173,6 +176,8 @@ LOGGING = {
         },
     }
 }
+
+AUTH_PROFILE_MODULE = 'homepage.UserProfile'
 
 LESS_OUTPUT_DIR = 'assets'
 #LESS_STATIC_ROOT = STATIC_ROOT

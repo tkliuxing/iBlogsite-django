@@ -6,7 +6,9 @@
 	<title>{{SITE_ENV.SITE_NAME}} - {% block title %}{% endblock %}</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<link rel="stylesheet" href="{{ STATIC_URL }}{% less "bootstrap/less/bootstrap.less" %}" type="text/css" />
+	{% block css %}
 	<link rel="stylesheet" href="{{ STATIC_URL }}{% less "css/main.less" %}" type="text/css" />
+	{% endblock %}
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-1.8.23.custom.css" type="text/css" />
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.8.0.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script>
@@ -18,8 +20,22 @@
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-				{% block navbar %}
-				{% endblock %}
+				<a class="brand" href="/">{{SITE_ENV.SITE_NAME}}</a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						{% block navbar %}
+						<li class="active">
+							<a href="/">
+								<i class="icon-home icon-white"></i>
+								首页
+							</a>
+						</li>
+						{% endblock %}
+					</ul>
+					<form class="navbar-search pull-left">
+						<input type="text" class="search-query" placeholder="Search">
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>

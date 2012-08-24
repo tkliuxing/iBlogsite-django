@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>下载 · Twitter Bootstrap中文版/中文翻译</title>
+    <title>Download · Twitter Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -20,9 +20,11 @@
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
   </head>
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
@@ -33,41 +35,38 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <button type="button"class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </a>
+          </button>
           <a class="brand" href="./index.html">Bootstrap</a>
-          <div class="nav-collapse">
+          <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="">
-                <a href="./index.html">概述</a>
+                <a href="./index.html">Overview</a>
               </li>
               <li class="">
-                <a href="./scaffolding.html">框架</a>
+                <a href="./scaffolding.html">Scaffolding</a>
               </li>
               <li class="">
-                <a href="./base-css.html">基础CSS</a>
+                <a href="./base-css.html">Base CSS</a>
               </li>
               <li class="">
-                <a href="./components.html">组件</a>
+                <a href="./components.html">Components</a>
               </li>
               <li class="">
-                <a href="./javascript.html">Javascript插件</a>
+                <a href="./javascript.html">Javascript plugins</a>
               </li>
               <li class="">
-                <a href="./less.html">使用LESS</a>
+                <a href="./less.html">Using LESS</a>
               </li>
               <li class="divider-vertical"></li>
               <li class="active">
-                <a href="./download.html">定制</a>
+                <a href="./download.html">Customize</a>
               </li>
               <li class="">
-                <a href="./examples.html">例子</a>
-              </li>
-	      <li class="">
-                <a href="./wrongway.html">译者言</a>
+                <a href="./examples.html">Examples</a>
               </li>
             </ul>
           </div>
@@ -80,146 +79,144 @@
 <!-- Masthead
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
-  <h1>定制并下载</h1>
-  <p class="lead">
-    <a href="https://github.com/twitter/bootstrap/zipball/master">下载完整库</a> 
-    或通过选择组件，javascript插件以及你所需的附件定制你自己的Bootstrap。
-  </p>
+  <h1>Customize and download</h1>
+  <p class="lead"><a href="https://github.com/twitter/bootstrap/zipball/master">Download the full repository</a> or customize your entire Bootstrap build by selecting only the components, javascript plugins, and assets you need.</p>
   <div class="subnav">
     <ul class="nav nav-pills">
-      <li><a href="#components">1. 选择组件</a></li>
-      <li><a href="#plugins">2. 选择jQuery插件</a></li>
-      <li><a href="#variables">3. 自定义变量</a></li>
-      <li><a href="#download">4. 下载</a></li>
+      <li><a href="#components">1. Choose components</a></li>
+      <li><a href="#plugins">2. Select jQuery plugins</a></li>
+      <li><a href="#variables">3. Customize variables</a></li>
+      <li><a href="#download">4. Download</a></li>
     </ul>
   </div>
 </header>
 
 <section class="download" id="components">
   <div class="page-header">
-    <a class="btn btn-small pull-right toggle-all" href="#">全选/全不选</a>
+    <a class="btn btn-small pull-right toggle-all" href="#">Toggle all</a>
     <h1>
-      1. 选择组件
-      <small>获取你想要的CSS</small>
+      1. Choose components
+      <small>Get just the CSS you need</small>
     </h1>
   </div>
   <div class="row download-builder">
     <div class="span3">
-      <h3>框架</h3>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="reset.less"> 标准化和重置 / Normalize and reset</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="scaffolding.less"> Body类型和链接 / Body type and links</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="grid.less"> 栅格系统 / Grid system</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="layouts.less"> 布局 / Layouts</label>
-      <h3>基础CSS</h3>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="type.less"> 标题，body等等 / Headings, body, etc</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="code.less"> Code和pre / Code and pre</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="labels.less"> 标签 / Labels</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="badges.less"> 标记 / Badges</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="tables.less"> 表格 / Tables</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="forms.less"> 表单 / Forms</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="buttons.less"> 按钮 / Buttons</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="sprites.less"> 图标 / Icons</label>
+      <h3>Scaffolding</h3>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="reset.less"> Normalize and reset</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="scaffolding.less"> Body type and links</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="grid.less"> Grid system</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="layouts.less"> Layouts</label>
+      <h3>Base CSS</h3>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="type.less"> Headings, body, etc</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="code.less"> Code and pre</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="labels-badges.less"> Labels and badges</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="tables.less"> Tables</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="forms.less"> Forms</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="buttons.less"> Buttons</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="sprites.less"> Icons</label>
     </div><!-- /span -->
     <div class="span3">
-      <h3>组件</h3>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="button-groups.less"> 按钮组和下拉按扭 / Button groups and dropdowns</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="navs.less"> 导航，标签页和胶囊链接 / Navs, tabs, and pills</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="navbar.less"> 导航条 / Navbar</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="breadcrumbs.less"> 面包屑导航栏 / Breadcrumbs</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="pagination.less"> 分页 / Pagination</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="pager.less"> 翻页 / Pager</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="thumbnails.less"> 缩略图 / Thumbnails</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="alerts.less"> 通知 / Alerts</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="progress-bars.less"> 进度条 / Progress bars</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="hero-unit.less"> 主角单元 / Hero unit</label>
+      <h3>Components</h3>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="button-groups.less"> Button groups and dropdowns</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="navs.less"> Navs, tabs, and pills</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="navbar.less"> Navbar</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="breadcrumbs.less"> Breadcrumbs</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="pagination.less"> Pagination</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="pager.less"> Pager</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="thumbnails.less"> Thumbnails</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="alerts.less"> Alerts</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="progress-bars.less"> Progress bars</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="hero-unit.less"> Hero unit</label>
     </div><!-- /span -->
     <div class="span3">
-      <h3>JS组件</h3>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="tooltip.less"> 提示 / Tooltips</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="popovers.less"> 弹出提示 / Popovers</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="modals.less"> 对话框 / Modals</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="dropdowns.less"> 下拉 / Dropdowns</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="accordion.less"> 折叠 / Collapse</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="carousel.less"> 轮播 / Carousel</label>
+      <h3>JS Components</h3>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="tooltip.less"> Tooltips</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="popovers.less"> Popovers</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="modals.less"> Modals</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="dropdowns.less"> Dropdowns</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="accordion.less"> Collapse</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="carousel.less"> Carousel</label>
     </div><!-- /span -->
     <div class="span3">
-      <h3>杂项</h3>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="wells.less"> 消息墙 / Wells</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="close.less"> 关闭图标 / Close icon</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="utilities.less"> 实用工具 / Utilities</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="component-animations.less"> 组件动画 / Component animations</label>
-      <h3>响应式</h3>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive.less"> 响应式布局 / Responsive layouts</label>
+      <h3>Miscellaneous</h3>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="wells.less"> Wells</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="close.less"> Close icon</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="utilities.less"> Utilities</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="component-animations.less"> Component animations</label>
+      <h3>Responsive</h3>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-utilities.less"> Visible/hidden classes</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-767px-max.less"> Narrow tablets and below (<767px)</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-768px-979px.less"> Tablets to desktops (767-979px)</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-1200px-min.less"> Large desktops (>1200px)</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-navbar.less"> Responsive navbar</label>
     </div><!-- /span -->
   </div><!-- /row -->
 </section>
 
 <section class="download" id="plugins">
   <div class="page-header">
-    <a class="btn btn-small pull-right toggle-all" href="#">全选/全不选</a>
+    <a class="btn btn-small pull-right toggle-all" href="#">Toggle all</a>
     <h1>
-      2. 选择jQuery插件
-      <small>快速添加所需的javascript</small>
+      2. Select jQuery plugins
+      <small>Quickly add only the necessary javascript</small>
     </h1>
   </div>
   <div class="row download-builder">
     <div class="span4">
       <label class="checkbox">
         <input type="checkbox" checked="true" value="bootstrap-transition.js">
-        过渡效果 / Transitions <small>(动画效果所需)</small>
+        Transitions <small>(required for any animation)</small>
       </label>
       <label class="checkbox">
         <input type="checkbox" checked="true" value="bootstrap-modal.js">
-        对话框 / Modals
+        Modals
       </label>
       <label class="checkbox">
         <input type="checkbox" checked="true" value="bootstrap-dropdown.js">
-        下拉 / Dropdowns
+        Dropdowns
       </label>
       <label class="checkbox">
         <input type="checkbox" checked="true" value="bootstrap-scrollspy.js">
-        滚动条侦测 / Scrollspy
+        Scrollspy
       </label>
       <label class="checkbox">
         <input type="checkbox" checked="true" value="bootstrap-tab.js">
-        切换式标签页 / Togglable tabs
+        Togglable tabs
       </label>
       <label class="checkbox">
         <input type="checkbox" checked="true" value="bootstrap-tooltip.js">
-        提示 / Tooltips
+        Tooltips
       </label>
     </div><!-- /span -->
     <div class="span4">
       <label class="checkbox">
         <input type="checkbox" checked="true" value="bootstrap-popover.js">
-        弹出提示 / Popovers <small>(需要Tooltips)</small>
+        Popovers <small>(requires Tooltips)</small>
       </label>
       <label class="checkbox">
         <input type="checkbox" checked="true" value="bootstrap-alert.js">
-        通知消息 / Alert messages
+        Alert messages
       </label>
       <label class="checkbox">
         <input type="checkbox" checked="true" value="bootstrap-button.js">
-        按钮 / Buttons
+        Buttons
       </label>
       <label class="checkbox">
         <input type="checkbox" checked="true" value="bootstrap-collapse.js">
-        折叠 / Collapse
+        Collapse
       </label>
       <label class="checkbox">
         <input type="checkbox" checked="true" value="bootstrap-carousel.js">
-        轮播 / Carousel
+        Carousel
       </label>
       <label class="checkbox">
         <input type="checkbox" checked="true" value="bootstrap-typeahead.js">
-        输入提醒 / Typeahead
+        Typeahead
       </label>
     </div><!-- /span -->
     <div class="span4">
-      <h4 class="muted">注意！</h4>
-      <p class="muted">
-	所有被选中的插件都会被集中编译成一个单独的bootstrap.js文件，且依赖于最新版本的 <a href="http://jquery.com/" target="_blank">jQuery</a> 。
-      </p>
+      <h4 class="muted">Heads up!</h4>
+      <p class="muted">All checked plugins will be compiled into a single file, bootstrap.js. All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.</p>
     </div><!-- /span -->
   </div><!-- /row -->
 </section>
@@ -227,26 +224,26 @@
 
 <section class="download" id="variables">
   <div class="page-header">
-    <a class="btn btn-small pull-right toggle-all" href="#">重置为默认值</a>
+    <a class="btn btn-small pull-right toggle-all" href="#">Reset to defaults</a>
     <h1>
-      3. 自定义变量
-      <small>修改Bootstrap而无须编译</small>
+      3. Customize variables
+      <small>Optionally modify Bootstrap without a compiler</small>
     </h1>
   </div>
   <div class="row download-builder">
     <div class="span3">
-      <h3>框架</h3>
+      <h3>Scaffolding</h3>
       <label>@bodyBackground</label>
       <input type="text" class="span3" placeholder="@white">
       <label>@textColor</label>
       <input type="text" class="span3" placeholder="@grayDark">
 
-      <h3>链接</h3>
+      <h3>Links</h3>
       <label>@linkColor</label>
       <input type="text" class="span3" placeholder="#08c">
       <label>@linkColorHover</label>
       <input type="text" class="span3" placeholder="darken(@linkColor, 15%)">
-      <h3>颜色</h3>
+      <h3>Colors</h3>
       <label>@blue</label>
       <input type="text" class="span3" placeholder="#049cdb">
       <label>@green</label>
@@ -262,7 +259,7 @@
       <label>@purple</label>
       <input type="text" class="span3" placeholder="#7a43b6">
 
-      <h3>图片合并</h3>
+      <h3>Sprites</h3>
       <label>@iconSpritePath</label>
       <input type="text" class="span3" placeholder="'../img/glyphicons-halflings.png'">
       <label>@iconWhiteSpritePath</label>
@@ -270,28 +267,34 @@
 
     </div><!-- /span -->
     <div class="span3">
-      <h3>栅格系统</h3>
+      <h3>Grid system</h3>
       <label>@gridColumns</label>
       <input type="text" class="span3" placeholder="12">
       <label>@gridColumnWidth</label>
       <input type="text" class="span3" placeholder="60px">
       <label>@gridGutterWidth</label>
       <input type="text" class="span3" placeholder="20px">
-      <h3>流式栅格系统</h3>
+      <h3>Fluid grid system</h3>
       <label>@fluidGridColumnWidth</label>
       <input type="text" class="span3" placeholder="6.382978723%">
       <label>@fluidGridGutterWidth</label>
       <input type="text" class="span3" placeholder="2.127659574%">
 
-      <h3>段落</h3>
+      <h3>Typography</h3>
+      <label>@sansFontFamily</label>
+      <input type="text" class="span3" placeholder="'Helvetica Neue', Helvetica, Arial, sans-serif">
+      <label>@serifFontFamily</label>
+      <input type="text" class="span3" placeholder="Georgia, 'Times New Roman', Times, serif">
+      <label>@monoFontFamily</label>
+      <input type="text" class="span3" placeholder="Menlo, Monaco, 'Courier New', monospace">
       <label>@baseFontSize</label>
       <input type="text" class="span3" placeholder="13px">
       <label>@baseFontFamily</label>
-      <input type="text" class="span3" placeholder="'Helvetica Neue', Helvetica, Arial, sans-serif">
+      <input type="text" class="span3" placeholder="@sansFontFamily">
       <label>@baseLineHeight</label>
       <input type="text" class="span3" placeholder="18px">
       <label>@altFontFamily</label>
-      <input type="text" class="span3" placeholder="Georgia, 'Times New Roman', Times, serif;">
+      <input type="text" class="span3" placeholder="@serifFontFamily">
       <label>@headingsFontFamily</label>
       <input type="text" class="span3" placeholder="inherit">
       <label>@headingsFontWeight</label>
@@ -306,7 +309,7 @@
       <input type="text" class="span3" placeholder="inherit">
     </div><!-- /span -->
     <div class="span3">
-      <h3>表格</h3>
+      <h3>Tables</h3>
       <label>@tableBackground</label>
       <input type="text" class="span3" placeholder="transparent">
       <label>@tableBackgroundAccent</label>
@@ -316,7 +319,7 @@
       <label>@tableBorder</label>
       <input type="text" class="span3" placeholder="#ddd">
 
-      <h3>导航栏</h3>
+      <h3>Navbar</h3>
       <label>@navbarHeight</label>
       <input type="text" class="span3" placeholder="40px">
       <label>@navbarBackground</label>
@@ -325,6 +328,8 @@
       <input type="text" class="span3" placeholder="@grayDark">
       <label>@navbarText</label>
       <input type="text" class="span3" placeholder="@grayLight">
+      <label>@navbarBrandColor</label>
+      <input type="text" class="span3" placeholder="@navbarLinkColor">
       <label>@navbarLinkColor</label>
       <input type="text" class="span3" placeholder="@grayLight">
       <label>@navbarLinkColorHover</label>
@@ -344,7 +349,7 @@
       <label>@navbarSearchPlaceholderColor</label>
       <input type="text" class="span3" placeholder="#ccc">
 
-      <h3>下拉</h3>
+      <h3>Dropdowns</h3>
       <label>@dropdownBackground</label>
       <input type="text" class="span3" placeholder="@white">
       <label>@dropdownBorder</label>
@@ -357,22 +362,26 @@
       <input type="text" class="span3" placeholder="@linkColor">
     </div><!-- /span -->
     <div class="span3">
-      <h3>表单</h3>
+      <h3>Forms</h3>
       <label>@placeholderText</label>
       <input type="text" class="span3" placeholder="@grayLight">
       <label>@inputBackground</label>
       <input type="text" class="span3" placeholder="@white">
       <label>@inputBorder</label>
       <input type="text" class="span3" placeholder="#ccc">
+      <label>@inputBorderRadius</label>
+      <input type="text" class="span3" placeholder="3px">
       <label>@inputDisabledBackground</label>
       <input type="text" class="span3" placeholder="@grayLighter">
+      <label>@formActionsBackground</label>
+      <input type="text" class="span3" placeholder="#f5f5f5">
 
       <label>@btnPrimaryBackground</label>
       <input type="text" class="span3" placeholder="@linkColor">
       <label>@btnPrimaryBackgroundHighlight</label>
       <input type="text" class="span3" placeholder="darken(@white, 10%);">
 
-      <h3>表单状态 &amp; 警告</h3>
+      <h3>Form states &amp; alerts</h3>
       <label>@warningText</label>
       <input type="text" class="span3" placeholder="#c09853">
       <label>@warningBackground</label>
@@ -396,15 +405,13 @@
 <section class="download" id="download">
   <div class="page-header">
     <h1>
-      4. 下载
+      4. Download
     </h1>
   </div>
   <div class="download-btn">
-    <a class="btn btn-primary" href="#">定制并下载</a>
-    <h4>有如下内容:</h4>
-    <p>
-      下载内容包括：编译后的CSS，编译和修改后的CSS，编译后的jQuery插件。出于方便，将其打包成一个zip文件。
-    </p>
+    <a class="btn btn-primary" href="#" >Customize and Download</a>
+    <h4>What's included?</h4>
+    <p>Downloads include compiled CSS, compiled and minified CSS, and compiled jQuery plugins, all nicely packed up into a zipball for your convenience.</p>
   </div>
 </section><!-- /download -->
 
@@ -413,9 +420,9 @@
       ================================================== -->
       <footer class="footer">
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>我们倾注世间之爱于设计与创作 <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-        <p>开源依照 <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a> 发布。 文档依照 <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> 发布。</p>
-        <p>Icons取自 <a href="http://glyphicons.com">Glyphicons Free</a>，授权依照 <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>。</p>
+        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
       </footer>
 
     </div><!-- /container -->
@@ -424,8 +431,8 @@
 
     <!-- Le javascript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster 
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script> -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script src="assets/js/bootstrap-transition.js"></script>
