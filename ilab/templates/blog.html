@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{% load md2 universaltag_tags gravatar %}
-{% block title %}首页{% endblock %}
+{% load md2 universaltag_tags gravatar assets %}
+{% block title %}{{blog.title}}{% endblock %}
 
 {% block head %}
 	{% if request.user.is_authenticated %}
@@ -8,6 +8,10 @@
 	{% else %}
 		<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/django.universaltag.css">
 	{% endif %}
+	<link rel="stylesheet" href="{{ STATIC_URL }}django_markdown/skins/simple/style.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}django_markdown/markdown.css">
+	<script src="{{ STATIC_URL }}django_markdown/jquery.markitup.js" type="text/javascript"></script>
+	<script src="{{ STATIC_URL }}django_markdown/markdown.js" type="text/javascript"></script>
 {% endblock %}
 
 {% block container %}
@@ -23,30 +27,70 @@
 			<div class="alert alert-message">
 				{{blog.content|markdown2:"safe, code-friendly, code-color"}}
 			</div>
-			<div class="well">
-				<div class="note date">
-					{% gravatar user.email 40 %}
-					<strong>{{blog.user}}</strong> at <strong>{{blog.create_time|date:"Y-m-d H:i:s"}}</strong>
-					<a class="note">留言:(0)</a>
-				</div>
-				<hr/>
-				<div>
-					{% if not request.user.is_authenticated %}
-					<div class="universaltag">
-						<ul class="universaltag ui-sortable">
-							{% for tag in blog.tags.all %}
-							<li class="tag frozen" pk="{{tag.pk}}">
-								<a href="{{tag.tag.get_absolute_url}}">{{tag.tag}}</a>
-							</li>
-							{% endfor %}
-						</ul>
+			<div class="well note date">
+					{% gravatar blog.user.email 40%}
+					<div class="date">
+						<p>{{blog.user}}</p>
+						<p>{{blog.create_time|date:"Y-m-d H:i:s"}}</p>
 					</div>
-					{% else %}
-					{% render_universaltag_tags of blog %}
+					<a class="btn btn-success" href="#note">
+						<i class="icon-comment"> </i>
+						评论({{blog.discuess.count}})
+					</a>
+			</div>
+			<div class="well tags">
+				{% if not request.user.is_authenticated %}
+				<div class="universaltag">
+					<ul class="universaltag ui-sortable">
+						{% for tag in blog.tags.all %}
+						<li class="tag frozen" pk="{{tag.pk}}">
+							<a href="{{tag.tag.get_absolute_url}}">{{tag.tag}}</a>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% else %}
+				{% render_universaltag_tags of blog %}
+				{% endif %}
+			</div>
+		</div>
+		<div class="well note" id="note" name="note">
+			{% for disc in blog.discuess.all %}
+			<div class="well">
+				<div class="note-head">
+					{% gravatar disc.email 40%}
+					<div>
+						<p>{{disc.name}}</p>
+						<p>{{disc.create_time|date:"Y-m-d H:i:s"}}</p>
+					</div>
+					{% if request.user.is_authenticated %}
+					<a href="javascript:;" class="label label-important del-disc" style="float:right;" data-url="{% url disc_del disc.pk %}">
+						<i class="icon-remove"></i>&nbsp;&nbsp;删除
+					</a>
 					{% endif %}
 				</div>
+				<div class="note-body">
+					{{disc.content|markdown2:"safe, code-friendly, code-color"}}
+				</div>
+			</div>
+			{% endfor %}
+			<div class="form alert">
+				<form action="." method="post">
+					{% csrf_token %}
+					{{form.as_p}}
+					<p>
+						<button type="submit" class="btn btn-success">
+							<i class="icon-ok"> </i>&nbsp;&nbsp;提交
+						</button>
+						<span class="label label-success" style="margin-left:140px;">Markdown is enabled!</span>
+					</p>
+				</form>
 			</div>
 		</div>
 	</div>
+{% assets filters="closure_js" output="assets/js/discuss.js" "js/discuss.js" %}
+	<script src="{{ ASSET_URL }}" type="text/javascript"></script>
+{% endassets %}
 </div>
 {% endblock %}
+

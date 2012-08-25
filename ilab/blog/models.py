@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 from django.db import models
 from django.utils.translation import ugettext as _
+from django.core.urlresolvers import reverse
 from universaltag.fields import UniversalTagField
 
 
@@ -19,6 +20,9 @@ class Blog(models.Model):
     def __unicode__(self):
         return u"%s : %s" % (self.user, self.title)
 
+    def get_absolute_url(self):
+        return reverse('blog', args=[self.pk])
+
 
 class Discuss(models.Model):
     user = models.ForeignKey('auth.User', verbose_name=_(u'评论用户'), null=True)
@@ -30,6 +34,7 @@ class Discuss(models.Model):
 
     class Meta:
         verbose_name = _(u'文章评论')
+        verbose_name_plural = _(u'文章评论')
 
     def __unicode__(self):
         if self.user:

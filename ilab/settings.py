@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     #'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.markup',
     'django.contrib.staticfiles',
     #'django.contrib.flatpages',
     'django.contrib.admindocs',
@@ -143,6 +144,7 @@ INSTALLED_APPS = (
     'django_markdown',
     'universaltag',
     'django_gravatar',
+    'django_scss',
     #'ilab.mytask',
     'ilab.blog',
     'ilab.homepage',
@@ -179,9 +181,15 @@ LOGGING = {
 
 AUTH_PROFILE_MODULE = 'homepage.UserProfile'
 
-LESS_OUTPUT_DIR = 'assets'
-#LESS_STATIC_ROOT = STATIC_ROOT
-LESS_BUILD_DIR = '/home/b/Code/website/iLab/ilab/static'
+INSTALLED_APPS += ('django_assets', )
+ASSETS_DEBUG = False
+ASSETS_URL_EXPIRE = True
+SASS_DEBUG_INFO = False
+STATICFILES_FINDERS += ('django_assets.finders.AssetsFinder', )
+
+# SCSS_EXECUTABLE = 'scss'
+# SCSS_OUTPUT_DIR = 'assets'
+# LESS_BUILD_DIR = '/home/b/Code/website/iLab/ilab/static'
 
 MARKDOWN_EDITOR_SKIN = 'simple'
 UNIVERSALTAG_AUTHOR_ATTRS = 'user'

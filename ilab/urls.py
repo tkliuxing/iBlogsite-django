@@ -6,6 +6,9 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(r'^$', 'ilab.homepage.views.homepage', name='home'),
+    url(r'^blog/(?P<blog>\d+)/$', 'ilab.blog.views.blog', name='blog'),
+    url(r'^discuss/(?P<discuss>\d+)/del/$', 'ilab.blog.views.discuss_del', name='disc_del'),
+
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^markdown/', include('django_markdown.urls')),
