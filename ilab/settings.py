@@ -121,9 +121,6 @@ ROOT_URLCONF = 'ilab.urls'
 WSGI_APPLICATION = 'ilab.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
     '/home/b/Code/website/iLab/ilab/templates',
 )
 
@@ -193,3 +190,8 @@ STATICFILES_FINDERS += ('django_assets.finders.AssetsFinder', )
 
 MARKDOWN_EDITOR_SKIN = 'simple'
 UNIVERSALTAG_AUTHOR_ATTRS = 'user'
+
+try:
+    from local_settings import *
+except:
+    pass
