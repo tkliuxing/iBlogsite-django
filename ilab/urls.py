@@ -18,7 +18,13 @@ urlpatterns = patterns(
 from django.conf import settings
 
 if settings.DEBUG:
+    from django.views.generic import TemplateView
     urlpatterns += patterns(
         'django.contrib.staticfiles.views',
         url(r'^static/(?P<path>.*)$', 'serve', {'document_root': '/home/b/Code/website/iLab/ilab/static'}),
+    )
+    urlpatterns += patterns(
+        '',
+        (r'^500\.html$', TemplateView.as_view(template_name="500.html")),
+        (r'^404\.html$', TemplateView.as_view(template_name="404.html")),
     )
