@@ -7,9 +7,10 @@ div.well.note.date {
 div.well.tags {
 	padding: 10px;
 }
-div.note.date a.btn.btn-success {
+div.note.date a.btn {
 	float: right;
 	margin-top: 5px;
+	margin-left: 10px;
 }
 div.note.date div.date{
 	float: left;
@@ -38,13 +39,4 @@ div.note-body {
 }
 .markItUpContainer {
 	width: 540px;
-}
-
-div.oops {
-	height: 200px;
-	text-align: center;
-	color: #F66;
-	h1,h2 {
-		line-height:95px;
-	}
 }

@@ -1,38 +1,26 @@
-{% load assets %}
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
 	<meta charset="utf-8">
-	<title>{{SITE_ENV.SITE_NAME}} - {% block title %}{% endblock %}</title>
+	<title>OuYangHongYu.info - </title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/less/bootstrap.css" type="text/css" />
-	{% block css %}
-		{% assets filters="pyscss,cssutils,cssrewrite" output="assets/css/main.css" "css/main.scss" %}
-			<link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css" />
-		{% endassets %}
-	{% endblock %}
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-1.8.23.custom.css" type="text/css" />
-	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.8.0.min.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script>
-	{# <script src="{{STATIC_URL}}js/less-1.3.0.min.js"></script> #}
-	{% block head %}
-	{% endblock %}
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" type="text/css" />
 </head>
-<body>
+<body style="padding-top: 70px;">
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-				<a class="brand" href="/">{{SITE_ENV.SITE_NAME}}</a>
+				<a class="brand" href="/">OuYangHongYu.info</a>
 				<div class="nav-collapse">
 					<ul class="nav">
-						{% block navbar %}
+						
 						<li class="active">
 							<a href="/">
 								<i class="icon-home icon-white"></i>
 								首页
 							</a>
 						</li>
-						{% endblock %}
+						
 					</ul>
 					<form class="navbar-search pull-right">
 						<input type="text" class="search-query" placeholder="Search">
@@ -45,9 +33,9 @@
 		<div class="row">
 			<div class="span2">&nbsp;</div>
 			<div class="span8">
-				<div class="well oops">
-					<h1>Oops! 500了!</h1>
-					<h2>Don't panic! Please go back!</h2>
+				<div class="well" style="height:200px; text-align:center; color:#F66;">
+					<h1 style="line-height:95px;">Oops! 500了!</h1>
+					<h2 style="line-height:95px;">Don't panic! Please go back!</h2>
 				</div>
 			</div>
 			<div class="span2">&nbsp;</div>

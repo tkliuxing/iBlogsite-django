@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<title>{{SITE_ENV.SITE_NAME}} - {% block title %}{% endblock %}</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/less/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" type="text/css" />
 	{% block css %}
 		{% assets filters="pyscss,cssutils,cssrewrite" output="assets/css/main.css" "css/main.scss" %}
 			<link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css" />
@@ -19,7 +19,7 @@
 	{% endblock %}
 </head>
 <body>
-	<div class="navbar navbar-fixed-top">
+	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
 				<a class="brand" href="/">{{SITE_ENV.SITE_NAME}}</a>

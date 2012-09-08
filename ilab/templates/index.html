@@ -16,7 +16,7 @@
 		{% for blog in blogs %}
 		<div class="well">
 			<div class="alert alert-success">
-				<a href="{{blog.get_absolute_url}}"><h3>{{blog.title}}</h3></a>
+				<h5>{{blog.title}}</h5>
 			</div>
 			<div class="alert alert-message">
 				{{blog.content|markdown2:"safe, code-friendly, code-color"}}
@@ -27,7 +27,7 @@
 						<p>{{blog.user}}</p>
 						<p>{{blog.create_time|date:"Y-m-d H:i:s"}}</p>
 					</div>
-					<a class="btn btn-success" href="{{blog.get_absolute_url}}">
+					<a class="btn btn-success" href="{{blog.get_absolute_url}}#note">
 						<i class="icon-comment"> </i>
 						评论({{blog.discuess.count}})
 					</a>
