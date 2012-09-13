@@ -4,3 +4,6 @@ ilab/static/bootstrap/js/tests
 iLabProject.egg-info
 *.pyc
 ._.*
+*.sublime-project
+*.sublime-workspace
+
