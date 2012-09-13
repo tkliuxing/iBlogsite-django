@@ -7,7 +7,7 @@ from ilab.blog.models import Blog
 
 def homepage(request):
     C = {}
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.all().order_by('-create_time')
     p = Paginator(blogs, 10)
     try:
         page = p.page(int(request.GET.get('p', 1)))
@@ -16,3 +16,4 @@ def homepage(request):
     C['blogs'] = page.object_list
     C['pagination'] = page
     return render_to_response('index.html', C, context_instance=RequestContext(request))
+
