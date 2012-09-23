@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<title>{{SITE_ENV.SITE_NAME}} - {% block title %}{% endblock %}</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta name="description" content="{% block description %}{% endblock %}">
 	<link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" type="text/css" />
 	{% block css %}
 		{% assets filters="pyscss,cssutils,cssrewrite" output="assets/css/main.css" "css/main.scss" %}
@@ -32,6 +33,33 @@
 								首页
 							</a>
 						</li>
+						{% if not request.user.is_authenticated %}
+						<li>
+							<a href="/login/">
+								<i class="icon-circle-arrow-down icon-white"></i>
+								登录
+							</a>
+						</li>
+						{% else %}
+						<li>
+							<a href="/admin/blog/blog/add/">
+								<i class="icon-pencil icon-white"></i>
+								写文章
+							</a>
+						</li>
+						<li>
+							<a href="/admin/">
+								<i class="icon-share icon-white"></i>
+								Admin
+							</a>
+						</li>
+						<li>
+							<a href="/logout/">
+								<i class="icon-circle-arrow-right icon-white"></i>
+								登出
+							</a>
+						</li>
+						{% endif %}
 						{% endblock %}
 					</ul>
 					<form class="navbar-search pull-right">

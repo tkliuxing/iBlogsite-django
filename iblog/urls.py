@@ -6,6 +6,8 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(r'^$', 'iblog.homepage.views.homepage', name='home'),
+    url(r'^login/$', 'iblog.homepage.views.login', name='login'),
+    url(r'^logout/$', 'iblog.homepage.views.logout', name='logout'),
     url(r'^blog/(?P<blog>\d+)/$', 'iblog.blog.views.blog', name='blog'),
     url(r'^discuss/(?P<discuss>\d+)/del/$', 'iblog.blog.views.discuss_del', name='disc_del'),
 

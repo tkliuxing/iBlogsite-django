@@ -177,6 +177,7 @@ LOGGING = {
 }
 
 AUTH_PROFILE_MODULE = 'homepage.UserProfile'
+LOGIN_URL = '/login/'
 
 INSTALLED_APPS += ('django_assets', )
 ASSETS_DEBUG = False

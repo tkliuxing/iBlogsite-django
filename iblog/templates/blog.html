@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 {% load md2 universaltag_tags gravatar assets %}
 {% block title %}{{blog.title}}{% endblock %}
+{% block description %}{{blog.title}}{% endblock %}
+
+{% block css %}
+	{{block.super}}
+	<link rel="stylesheet" href="{{ STATIC_URL }}django_markdown/skins/simple/style.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}django_markdown/markdown.css">
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/django.universaltag.css">
+{% endblock %}
 
 {% block head %}
 	{% if request.user.is_authenticated %}
 		{% render_universaltag_head %}
-	{% else %}
-		<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/django.universaltag.css">
 	{% endif %}
-	<link rel="stylesheet" href="{{ STATIC_URL }}django_markdown/skins/simple/style.css">
-	<link rel="stylesheet" href="{{ STATIC_URL }}django_markdown/markdown.css">
 	<script src="{{ STATIC_URL }}django_markdown/jquery.markitup.js" type="text/javascript"></script>
 	<script src="{{ STATIC_URL }}django_markdown/markdown.js" type="text/javascript"></script>
 {% endblock %}
@@ -38,6 +42,23 @@
 						评论({{blog.discuess.count}})
 					</a>
 			</div>
+			<div class="well">
+				<div class="bshare-custom">
+					<a title="分享到" href="javascript:;" class="bshare-more">分享到</a>
+					<a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:;"></a>
+					<a title="分享到腾讯微博" class="bshare-qqmb" href="javascript:;"></a>
+					<a title="分享到人人网" class="bshare-renren" href="javascript:;"></a>
+					<a title="分享到豆瓣" class="bshare-douban" href="javascript:;"></a>
+					<a title="分享到Facebook" class="bshare-facebook" href="javascript:;"></a>
+					<a title="分享到Twitter" class="bshare-twitter" href="javascript:;"></a>
+					<a title="分享到Google+" class="bshare-gplus" href="javascript:;"></a>
+					<a title="分享到42区" class="bshare-42qu" href="javascript:;"></a>
+					<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis" href="javascript:;"></a>
+				</div>
+				<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+				<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+			</div>
+			{% if blog.tags.all or request.user.is_authenticated %}
 			<div class="well tags">
 				{% if not request.user.is_authenticated %}
 				<div class="universaltag">
@@ -53,6 +74,7 @@
 				{% render_universaltag_tags of blog %}
 				{% endif %}
 			</div>
+			{% endif %}
 		</div>
 		<div class="well note" id="note" name="note">
 			{% for disc in blog.discuess.all %}
