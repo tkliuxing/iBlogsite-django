@@ -1,9 +1,10 @@
 *assets*
-ilab/static/bootstrap/docs/build
-ilab/static/bootstrap/js/tests
-iLabProject.egg-info
+*/static/bootstrap/docs/build
+*/static/bootstrap/js/tests
+*.egg-info
 *.pyc
 ._.*
 *.sublime-project
 *.sublime-workspace
+local_settings.py
 

@@ -11,12 +11,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ilab',
-        'USER': 'b',
-        'PASSWORD': 'squarenix',
-        'HOST': '10.211.55.9',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.',
+        'NAME': 'blog',
+        'USER': 'blog',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -32,9 +32,9 @@ LANGUAGE_CODE = 'zh-cn'
 
 SITE_ID = 1
 
-SITE_DOMAIN = 'http://gentoo'
+SITE_DOMAIN = 'http://iblog.dev'
 
-SITE_NAME = 'iLab'
+SITE_NAME = 'iBlog'
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -84,7 +84,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '00s8#qwl&amp;%ejc@sdufjyod+f+ct-dxh8oi(a*w64kzkhygwo+s'
+SECRET_KEY = ''
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -142,7 +142,6 @@ INSTALLED_APPS = (
     'universaltag',
     'django_gravatar',
     'django_scss',
-    #'ilab.mytask',
     'ilab.blog',
     'ilab.homepage',
 )
