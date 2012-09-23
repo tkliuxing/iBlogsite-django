@@ -1,4 +1,7 @@
 # Django settings for iblog project.
+import os
+
+PROJECTROOT = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -49,7 +52,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '/home/b/Code/website/iblog/upload'
+MEDIA_ROOT = '%s/upload' % PROJECTROOT
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -72,7 +75,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/home/b/Code/website/iblog/iblog/static",
+    "%s/static" % PROJECTROOT,
 )
 
 # List of finder classes that know how to find static files in
@@ -121,7 +124,7 @@ ROOT_URLCONF = 'iblog.urls'
 WSGI_APPLICATION = 'iblog.wsgi.application'
 
 TEMPLATE_DIRS = (
-    '/home/b/Code/website/iblog/iblog/templates',
+    '%s/templates' % PROJECTROOT,
 )
 
 INSTALLED_APPS = (
@@ -136,12 +139,10 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.admin',
     'south',
-    'json_field',
     'less',
     'django_markdown',
     'universaltag',
     'django_gravatar',
-    'django_scss',
     'iblog.blog',
     'iblog.homepage',
 )
@@ -182,10 +183,6 @@ ASSETS_DEBUG = False
 ASSETS_URL_EXPIRE = True
 SASS_DEBUG_INFO = False
 STATICFILES_FINDERS += ('django_assets.finders.AssetsFinder', )
-
-# SCSS_EXECUTABLE = 'scss'
-# SCSS_OUTPUT_DIR = 'assets'
-# LESS_BUILD_DIR = '/home/b/Code/website/iblog/iblog/static'
 
 MARKDOWN_EDITOR_SKIN = 'simple'
 UNIVERSALTAG_AUTHOR_ATTRS = 'user'
