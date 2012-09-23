@@ -1,4 +1,4 @@
-# Django settings for ilab project.
+# Django settings for iblog project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -49,7 +49,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '/home/b/Code/website/iLab/upload'
+MEDIA_ROOT = '/home/b/Code/website/iblog/upload'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -61,7 +61,7 @@ MEDIA_URL = '%s/media/' % SITE_DOMAIN
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = ''
-#'/home/b/Code/website/iLab/static'
+#'/home/b/Code/website/iblog/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -72,7 +72,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/home/b/Code/website/iLab/ilab/static",
+    "/home/b/Code/website/iblog/iblog/static",
 )
 
 # List of finder classes that know how to find static files in
@@ -100,8 +100,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
-    "ilab.context_processors.site_env",
-    "ilab.context_processors.request",
+    "iblog.context_processors.site_env",
+    "iblog.context_processors.request",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -115,13 +115,13 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'ilab.urls'
+ROOT_URLCONF = 'iblog.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'ilab.wsgi.application'
+WSGI_APPLICATION = 'iblog.wsgi.application'
 
 TEMPLATE_DIRS = (
-    '/home/b/Code/website/iLab/ilab/templates',
+    '/home/b/Code/website/iblog/iblog/templates',
 )
 
 INSTALLED_APPS = (
@@ -142,8 +142,8 @@ INSTALLED_APPS = (
     'universaltag',
     'django_gravatar',
     'django_scss',
-    'ilab.blog',
-    'ilab.homepage',
+    'iblog.blog',
+    'iblog.homepage',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -185,7 +185,7 @@ STATICFILES_FINDERS += ('django_assets.finders.AssetsFinder', )
 
 # SCSS_EXECUTABLE = 'scss'
 # SCSS_OUTPUT_DIR = 'assets'
-# LESS_BUILD_DIR = '/home/b/Code/website/iLab/ilab/static'
+# LESS_BUILD_DIR = '/home/b/Code/website/iblog/iblog/static'
 
 MARKDOWN_EDITOR_SKIN = 'simple'
 UNIVERSALTAG_AUTHOR_ATTRS = 'user'

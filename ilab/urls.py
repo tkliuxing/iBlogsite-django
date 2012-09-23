@@ -5,9 +5,9 @@ admin.autodiscover()
 #flatpages.register()
 urlpatterns = patterns(
     '',
-    url(r'^$', 'ilab.homepage.views.homepage', name='home'),
-    url(r'^blog/(?P<blog>\d+)/$', 'ilab.blog.views.blog', name='blog'),
-    url(r'^discuss/(?P<discuss>\d+)/del/$', 'ilab.blog.views.discuss_del', name='disc_del'),
+    url(r'^$', 'iblog.homepage.views.homepage', name='home'),
+    url(r'^blog/(?P<blog>\d+)/$', 'iblog.blog.views.blog', name='blog'),
+    url(r'^discuss/(?P<discuss>\d+)/del/$', 'iblog.blog.views.discuss_del', name='disc_del'),
 
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
@@ -21,7 +21,7 @@ if settings.DEBUG:
     from django.views.generic import TemplateView
     urlpatterns += patterns(
         'django.contrib.staticfiles.views',
-        url(r'^static/(?P<path>.*)$', 'serve', {'document_root': '/home/b/Code/website/iLab/ilab/static'}),
+        url(r'^static/(?P<path>.*)$', 'serve', {'document_root': '/home/b/Code/website/iblog/iblog/static'}),
     )
     urlpatterns += patterns(
         '',

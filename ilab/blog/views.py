@@ -5,8 +5,8 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from ilab.blog.models import Blog, Discuss
-from ilab.blog.forms import DiscussForm, UserDiscussForm
+from iblog.blog.models import Blog, Discuss
+from iblog.blog.forms import DiscussForm, UserDiscussForm
 
 
 def blog(request, blog):

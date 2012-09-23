@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 from django import forms
 from django_markdown.widgets import MarkdownWidget
-from ilab.blog.models import Discuss
+from iblog.blog.models import Discuss
 
 
 class DiscussForm(forms.ModelForm):

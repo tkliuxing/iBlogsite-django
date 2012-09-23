@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.paginator import Paginator
-from ilab.blog.models import Blog
+from iblog.blog.models import Blog
 
 
 def homepage(request):

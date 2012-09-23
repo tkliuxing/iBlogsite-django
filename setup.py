@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Setup script for iLab Project.
+# Setup script for iBlog Project.
 #
 # A big thanks to Django project for some of the fixes used in here for
 # MacOS X and data files installation.
@@ -15,7 +15,7 @@ from setuptools import setup, find_packages
 from distutils.command.install_data import install_data
 from distutils.command.install import INSTALL_SCHEMES
 
-from ilab import get_package_version, is_release, VERSION
+from iblog import get_package_version, is_release, VERSION
 
 
 # Make sure we're actually in the directory containing setup.py.
@@ -54,13 +54,13 @@ else:
     cmdclasses = {'install_data': install_data}
 
 
-PACKAGE_NAME = 'iLabProject'
+PACKAGE_NAME = 'iBlogProject'
 
 
 # Build the reviewboard package.
 setup(name=PACKAGE_NAME,
       version=get_package_version(),
-      description="iLab.",
+      description="iblog.",
       author="Ronald Bai",
       author_email="ouyanghongyu@gmail.com",
       packages=find_packages(),
