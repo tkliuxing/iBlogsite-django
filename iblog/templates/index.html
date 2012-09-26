@@ -24,7 +24,7 @@
 		{% for blog in blogs %}
 		<div class="well">
 			<div class="alert alert-success">
-				<h5>{{blog.title}}</h5>
+				<h4>{{blog.title}}</h4>
 			</div>
 			<div class="alert alert-message">
 				{{blog.content|markdown2:"safe, code-friendly, code-color"}}

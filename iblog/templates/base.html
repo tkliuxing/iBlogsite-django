@@ -78,5 +78,8 @@
 			<p>本站代码托管于<a href="https://github.com/tkliuxing/iBlogsite-django/" target="_blank">Github</a>,欢迎clone!</p>
 		</footer>
 	</div>
+	{% if GA_CODE %}
+		{% include "ga.html" %}
+	{% endif %}
 </body>
 </html>

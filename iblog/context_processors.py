@@ -9,3 +9,6 @@ def site_env(request):
 
 def request(request):
     return {'request': request}
+
+def google_analytics(request):
+	return {'GA_CODE': getattr(settings, 'GA_CODE', '')}
