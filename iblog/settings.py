@@ -106,8 +106,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
     "iblog.context_processors.site_env",
     "iblog.context_processors.request",
-    "iblog.context_processors.google_analytics", 
+    "iblog.context_processors.google_analytics",
     # 如果你想使用此内容，需要在settings中配置GA_CODE项。
+    "iblog.context_processors.tag_manager",
 )
 
 MIDDLEWARE_CLASSES = (

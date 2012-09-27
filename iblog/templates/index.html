@@ -98,7 +98,12 @@
 		{% endif %}
 	</div>
 	<div class="span4">
-		<div class="well">We are one</div>
+		<div class="well">
+			<h4>Tags:</h4>
+			{% for tag in tagmanager.all %}
+				<a href="{{ tag.get_absolute_url }}" class="label label-info">{{tag}}</a>
+			{% endfor %}
+		</div>
 	</div>
 </div>
 {% endblock %}
