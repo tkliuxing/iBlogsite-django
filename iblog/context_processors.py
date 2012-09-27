@@ -17,4 +17,12 @@ def google_analytics(request):
 
 
 def tag_manager(request):
-	return {'tagmanager': Tag.objects}
+	tag_styles = [
+		'',
+		'label-success',
+		'label-warning',
+		'label-important',
+		'label-info',
+		'label-inverse',
+	]
+	return {'tagmanager': Tag.objects, 'tag_styles': tag_styles}

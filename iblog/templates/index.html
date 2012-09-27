@@ -101,7 +101,7 @@
 		<div class="well">
 			<h4>Tags:</h4>
 			{% for tag in tagmanager.all %}
-				<a href="{{ tag.get_absolute_url }}" class="label label-info">{{tag}}</a>
+				<a href="{{ tag.get_absolute_url }}" class="label {{tag_styles|random}}">{{tag}}</a>
 			{% endfor %}
 		</div>
 	</div>
