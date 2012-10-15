@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% load md2 universaltag_tags gravatar assets %}
+{% load i18n md2 universaltag_tags gravatar assets %}
+{% load url from future %}
 {% block title %}{{blog.title}}{% endblock %}
 {% block description %}{{blog.title}}{% endblock %}
 
@@ -42,14 +43,22 @@
 						<p>{{blog.user}}</p>
 						<p>{{blog.create_time|date:"Y-m-d H:i:s"}}</p>
 					</div>
+					{% if request.user.is_authenticated %}
+					<a class="btn btn-danger" href="{% url 'admin:blog_blog_delete' blog.pk %}">
+						{% trans '删除' %}
+					</a>
+					<a class="btn btn-primary" href="{% url 'admin:blog_blog_change' blog.pk %}">
+						{% trans '编辑' %}
+					</a>
+					{% endif %}
 					<a class="btn btn-success" href="#note">
 						<i class="icon-comment"> </i>
-						评论({{blog.discuess.count}})
+						{% trans '评论' %}({{blog.discuess.count}})
 					</a>
 			</div>
 			<div class="well">
 				<div class="bshare-custom">
-					<a title="分享到" href="javascript:;" class="bshare-more">分享到</a>
+					<a title="分享到" href="javascript:;" class="bshare-more">{% trans '分享到' %}</a>
 					<a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:;"></a>
 					<a title="分享到腾讯微博" class="bshare-qqmb" href="javascript:;"></a>
 					<a title="分享到人人网" class="bshare-renren" href="javascript:;"></a>
@@ -92,7 +101,7 @@
 					</div>
 					{% if request.user.is_authenticated %}
 					<a href="javascript:;" class="label label-important del-disc" style="float:right;" data-url="{% url disc_del disc.pk %}">
-						<i class="icon-remove"></i>&nbsp;&nbsp;删除
+						<i class="icon-remove"></i>&nbsp;&nbsp;{% trans '删除' %}
 					</a>
 					{% endif %}
 				</div>
@@ -107,7 +116,7 @@
 					{{form.as_p}}
 					<p>
 						<button type="submit" class="btn btn-success">
-							<i class="icon-ok"> </i>&nbsp;&nbsp;提交
+							<i class="icon-ok"> </i>&nbsp;&nbsp;{% trans '提交' %}
 						</button>
 						<span class="label label-success" style="margin-left:140px;">Markdown is enabled!</span>
 					</p>
@@ -115,9 +124,7 @@
 			</div>
 		</div>
 	</div>
-{% assets filters="closure_js" output="assets/js/discuss.js" "js/discuss.js" %}
-	<script src="{{ ASSET_URL }}" type="text/javascript"></script>
-{% endassets %}
+	<script src="{{ STATIC_URL }}assets/js/discuss.js" type="text/javascript"></script>
 </div>
 {% endblock %}
 

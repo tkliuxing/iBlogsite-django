@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% load md2 universaltag_tags gravatar %}
+{% load i18n md2 universaltag_tags gravatar %}
+{% load url from future %}
 {% block title %}首页{% endblock %}
 {% block description %}首页{% endblock %}
 
@@ -16,7 +17,7 @@
 
 {% block container %}
 <div style="display:none">
-	<a class="bshareDiv" href="http://www.bshare.cn/share">分享按钮</a>
+	<a class="bshareDiv" href="http://www.bshare.cn/share">{% trans '分享按钮' %}</a>
 	<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#uuid=&amp;style=3&amp;fs=4&amp;textcolor=#fff&amp;bgcolor=#9C3&amp;text=分享到"></script>
 </div>
 <div class="row">
@@ -35,9 +36,17 @@
 						<p>{{blog.user}}</p>
 						<p>{{blog.create_time|date:"Y-m-d H:i:s"}}</p>
 					</div>
+					{% if request.user.is_authenticated %}
+					<a class="btn btn-danger" href="{% url 'admin:blog_blog_delete' blog.pk %}">
+						{% trans '删除' %}
+					</a>
+					<a class="btn btn-primary" href="{% url 'admin:blog_blog_change' blog.pk %}">
+						{% trans '编辑' %}
+					</a>
+					{% endif %}
 					<a class="btn btn-success" href="{{blog.get_absolute_url}}#note">
 						<i class="icon-comment"> </i>
-						评论({{blog.discuess.count}})
+						{% trans '评论' %}({{blog.discuess.count}})
 					</a>
 			</div>
 			{% if blog.tags.all or request.user.is_authenticated %}
@@ -74,7 +83,7 @@
 			<ul>
 				{% if pagination.has_previous %}
 				<li>
-					<a href="./?p={{pagination.previous_page_number}}">前一页</a>
+					<a href="./?p={{pagination.previous_page_number}}">{% trans '前一页' %}</a>
 				</li>
 				{% endif %}
 				{% for i in pagination.paginator.page_range %}
@@ -90,7 +99,7 @@
 				{% endfor %}
 				{% if pagination.has_next %}
 				<li>
-					<a href="./?p={{pagination.next_page_number}}">后一页</a>
+					<a href="./?p={{pagination.next_page_number}}">{% trans '后一页' %}</a>
 				</li>
 				{% endif %}
 			</ul>

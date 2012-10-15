@@ -14,8 +14,8 @@ class Blog(models.Model):
     edit_time = models.DateTimeField(auto_now=True, verbose_name=_(u'修改时间'))
 
     class Meta:
-        verbose_name = _(u'Blog')
-        verbose_name_plural = _(u'Blogs')
+        verbose_name = _(u'文章')
+        verbose_name_plural = _(u'文章')
 
     def __unicode__(self):
         return u"%s : %s" % (self.user, self.title)

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static i18n md2 universaltag_tags gravatar %}
-{% block title %}首页{% endblock %}
-{% block description %}首页{% endblock %}
+{% block title %}{% trans '登录' %}{% endblock %}
+{% block description %}{% trans '登录' %}{% endblock %}
 
 {% block css %}
 	{{block.super}}
@@ -15,10 +15,18 @@
 				<div class="well login" style="text-align:center;">
 					<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
 						<div class="form-row">
-							<label for="id_username" class="required">{% trans 'Username:' %}</label> {{ form.username }}
-						</div>
-						<div class="form-row">
-							<label for="id_password" class="required">{% trans 'Password:' %}</label> {{ form.password }}
+							<div class="control-group">
+								<label class="control-label" for="id_username">{% trans 'Username:' %}</label>
+								<div class="controls">
+									{{ form.username }}
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="id_password">{% trans 'Password:' %}</label>
+								<div class="controls">
+									{{ form.password }}
+								</div>
+							</div>
 							<input type="hidden" name="this_is_the_login_form" value="1" />
 							<input type="hidden" name="next" value="{{ next }}" />
 						</div>

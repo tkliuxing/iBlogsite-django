@@ -36,8 +36,6 @@ LANGUAGE_CODE = 'zh-cn'
 
 SITE_ID = 1
 
-SITE_DOMAIN = 'http://iblog.dev'
-
 SITE_NAME = 'iBlog'
 
 # If you set this to False, Django will make some optimizations so as not
@@ -53,30 +51,30 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '%s/upload' % PROJECTROOT
+MEDIA_ROOT = os.path.join(PROJECTROOT, "upload/")
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = '%s/media/' % SITE_DOMAIN
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(PROJECTROOT, "assets/")
 #'/home/b/Code/website/iblog/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '%s/static/' % SITE_DOMAIN
+STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "%s/static" % PROJECTROOT,
+    os.path.join(PROJECTROOT, "static/"),
 )
 
 # List of finder classes that know how to find static files in
@@ -128,7 +126,7 @@ ROOT_URLCONF = 'iblog.urls'
 WSGI_APPLICATION = 'iblog.wsgi.application'
 
 TEMPLATE_DIRS = (
-    '%s/templates' % PROJECTROOT,
+    os.path.join(PROJECTROOT, "templates/"),
 )
 
 INSTALLED_APPS = (
@@ -192,7 +190,13 @@ STATICFILES_FINDERS += ('django_assets.finders.AssetsFinder', )
 MARKDOWN_EDITOR_SKIN = 'simple'
 UNIVERSALTAG_AUTHOR_ATTRS = 'user'
 
-try:
-    from local_settings import *
-except:
-    pass
+if os.path.lexists("/home/dotcloud/"):
+    try:
+        from dot_settings import *
+    except:
+        pass
+else:
+    try:
+        from local_settings import *
+    except:
+        pass

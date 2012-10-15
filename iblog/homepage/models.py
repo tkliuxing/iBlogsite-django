@@ -14,8 +14,8 @@ class UserProfile(models.Model):
     description = models.TextField(max_length=2000, null=True, blank=True)
 
     class Meta:
-        verbose_name = _('UserProfile')
-        verbose_name_plural = _('UserProfiles')
+        verbose_name = _(u'用户详情')
+        verbose_name_plural = _(u'用户详情')
 
     def __unicode__(self):
         return self.user.username

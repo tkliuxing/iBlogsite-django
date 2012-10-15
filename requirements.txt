@@ -1,22 +1,18 @@
 Django==1.4.1
-PIL
 Markdown==2.2.0
-markdown2==2.0.1
+PIL==1.1.7
 Pygments==1.5
 South==0.7.6
+cssutils==0.9.10b1
+django-gravatar2==1.0.6
+-e git+https://github.com/thagat/django-less.git@39ec31737304be5cb56205e1aeaeaf415a215a04#egg=django_less-dev
 django-markdown==0.1.0
-gunicorn==0.14.6
+django-piston==0.2.3
+-e git+https://github.com/tkliuxing/django-universaltag.git@8db689873f5ee4e724b93feb5c820ec41a3c3595#egg=django_universaltag-dev
+markdown2==2.1.0
 psycopg2==2.4.5
+pyScss==1.1.4
 python-dateutil==2.1
 simplejson==2.6.1
--e git+https://github.com/tkliuxing/django-universaltag.git#egg=django-universaltag
--e git+https://github.com/thagat/django-less.git#egg=django-less
-closure==20120305
-cssutils==0.9.10b1
-pyScss==1.1.4
 webassets==0.7.1
-yuicompressor==2.4.7
-django-piston==0.2.3
-django-gravatar2==1.0.6
-django-fagungis==0.0.17
-supervisor==3.0a12
+wsgiref==0.1.2
