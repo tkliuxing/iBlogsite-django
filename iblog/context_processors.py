@@ -26,3 +26,13 @@ def tag_manager(request):
 		'label-inverse',
 	]
 	return {'tagmanager': Tag.objects, 'tag_styles': tag_styles}
+
+
+def show_profile(request):
+	from homepage.models import UserProfile
+	profile = UserProfile.objects.filter(show_in_page=True)
+	if len(profile) == 1:
+		print profile[0].description
+		return {'USERPROFILE': profile[0].description}
+	else:
+		return {'USERPROFILE': None}

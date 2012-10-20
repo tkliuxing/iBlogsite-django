@@ -107,6 +107,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "iblog.context_processors.google_analytics",
     # 如果你想使用此内容，需要在settings中配置GA_CODE项。
     "iblog.context_processors.tag_manager",
+    "iblog.context_processors.show_profile",
 )
 
 MIDDLEWARE_CLASSES = (

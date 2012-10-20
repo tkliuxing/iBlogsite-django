@@ -12,6 +12,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField('auth.User')
     gender = models.IntegerField(default=2, choices=GENDER_CHOICES)
     description = models.TextField(max_length=2000, null=True, blank=True)
+    show_in_page = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = _(u'用户详情')

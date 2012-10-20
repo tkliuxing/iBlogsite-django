@@ -8,3 +8,4 @@
 *.sublime-workspace
 local_settings.py
 
+iblog/homepage/migrations
