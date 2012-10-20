@@ -28,6 +28,10 @@
 				<a href="{{ tag.get_absolute_url }}" class="label {{tag_styles|random}}">{{tag}}</a>
 			{% endfor %}
 		</div>
+		<div class="well">
+			<h4>Profile:</h4>
+			{{ USERPROFILE|markdown2:"safe, code-friendly, code-color" }}
+		</div>
 	</div>
 	<div class="span8">
 		<div class="well">
