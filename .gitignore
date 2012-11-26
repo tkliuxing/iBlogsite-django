@@ -9,3 +9,4 @@
 local_settings.py
 
 iblog/homepage/migrations
+*.db
