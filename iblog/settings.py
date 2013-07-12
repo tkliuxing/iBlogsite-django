@@ -148,6 +148,7 @@ INSTALLED_APPS = (
     'django_gravatar',
     'iblog.blog',
     'iblog.homepage',
+    'iblog.toupiao',
 )
 
 # A sample logging configuration. The only tangible logging

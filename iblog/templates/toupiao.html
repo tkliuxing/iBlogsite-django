@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<title>投票</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" type="text/css" />
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript">
+	jQuery(document).ajaxSend(function(event, xhr, settings) {
+		function getCookie(name) {
+			var cookieValue = null;
+			if (document.cookie && document.cookie != '') {
+				var cookies = document.cookie.split(';');
+				for (var i = 0; i < cookies.length; i++) {
+					var cookie = jQuery.trim(cookies[i]);
+					// Does this cookie string begin with the name we want?
+					if (cookie.substring(0, name.length + 1) == (name + '=')) {
+						cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+						break;
+					}
+				}
+			}
+			return cookieValue;
+		}
+		function sameOrigin(url) {
+			// url could be relative or scheme relative or absolute
+			var host = document.location.host; // host + port
+			var protocol = document.location.protocol;
+			var sr_origin = '//' + host;
+			var origin = protocol + sr_origin;
+			// Allow absolute or scheme relative URLs to same origin
+			return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+				(url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+				// or any other URL that isn't scheme relative or absolute i.e relative.
+				!(/^(\/\/|http:|https:).*/.test(url));
+		}
+		function safeMethod(method) {
+			return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+		}
+
+		if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
+			xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+		}
+	});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+			{% for toupiao in toupiaos %}
+				<div class="well">
+					<div class="alert alert-success">
+						<h2>{{toupiao.title}}</h2>
+					</div>
+					<div class="alert alert-message">
+						{{toupiao.description}}
+					</div>
+					<div class="alert alert-info">
+						<table>
+						{% for xiangmu in toupiao.xiangmu.all %}
+							<tr>
+								<td width="100px">
+									{{xiangmu.name}}
+								</td>
+								<td width="690px">
+									<div class="progress progress-striped progress-success" style="margin-bottom: 0px;">
+										&nbsp;&nbsp;{{xiangmu.count}}
+										<div class="bar" id="xm-{{xiangmu.pk}}" style="width: {{xiangmu.percent}}%;"></div>
+									</div>
+								</td>
+								<td width="50px">
+									<button class="btn btn-small plusone" data-url="{% url plusone xiangmu.pk %}">投票</button>
+								</td>
+							</tr>
+						{% endfor %}
+						</table>
+					</div>
+					<div class="alert alert-info">
+						<form action="{% url xinxiangmu toupiao.pk %}" class="addxiangmu" method="POST" style="margin:0;">
+							{% csrf_token %}
+							<table>
+								<tr>
+									<td width="100px">
+										新增其它项
+									</td>
+									<td width="250px">
+										<input style="margin-bottom: 0;" type="text" name="new"/>
+									</td>
+									<td width="50px">
+										<input class="btn btn-small" type="submit" value="新增"/>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+			{% empty %}
+				<div class="well">
+					<div class="alert alert-success">
+						<h2>Hello world!</h2>
+					</div>
+					<div class="alert alert-message">
+						This is new blog site.
+					</div>
+					<div class="alert alert-info"><strong>Someone</strong> at <strong>Today</strong></div>
+				</div>
+			{% endfor %}
+
+				{% if pagination.has_other_pages %}
+				<div class="pagination">
+					<ul>
+						{% if pagination.has_previous %}
+						<li>
+							<a href="./?p={{pagination.previous_page_number}}">前一页</a>
+						</li>
+						{% endif %}
+						{% for i in pagination.paginator.page_range %}
+						{% if pagination.number == i %}
+						<li class="active">
+							<a href="javascript:;">{{i}}</a>
+						</li>
+						{% else %}
+						<li>
+							<a href="./?p={{i}}">{{i}}</a>
+						</li>
+						{% endif %}
+						{% endfor %}
+						{% if pagination.has_next %}
+						<li>
+							<a href="./?p={{pagination.next_page_number}}">后一页</a>
+						</li>
+						{% endif %}
+					</ul>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+		<hr>
+		<footer>
+			<p><a href="http://weibo.com/oyhy" target="_blank">OuYangHongYu</a> 2011-2012</p>
+			<p>本站代码托管于<a href="https://github.com/tkliuxing/iBlogsite-django/" target="_blank">Github</a>,欢迎clone!</p>
+		</footer>
+	</div>
+<script type="text/javascript">
+$(function(){
+	$(".plusone").click(function(){
+		var url = $(this).data('url');
+		$.post(url, {}, function(data){
+			if(data.success == true){
+				location.href = location.href;
+			}else{
+				alert(data.error_message);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

@@ -10,6 +10,7 @@ urlpatterns = patterns(
     url(r'^logout/$', 'iblog.homepage.views.logout', name='logout'),
     url(r'^blog/(?P<blog>\d+)/$', 'iblog.blog.views.blog', name='blog'),
     url(r'^discuss/(?P<discuss>\d+)/del/$', 'iblog.blog.views.discuss_del', name='disc_del'),
+    url(r'^toupiao/', include('iblog.toupiao.urls')),
 
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
