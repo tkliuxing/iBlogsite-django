@@ -66,8 +66,8 @@
 								</td>
 								<td width="690px">
 									<div class="progress progress-striped progress-success" style="margin-bottom: 0px;">
-										&nbsp;&nbsp;{{xiangmu.count}}
-										<div class="bar" id="xm-{{xiangmu.pk}}" style="width: {{xiangmu.percent}}%;"></div>
+										<div class="bar" id="xm-{{xiangmu.pk}}" style="width: {{xiangmu.percent}}%; color:#000;">
+										&nbsp;&nbsp;{{xiangmu.count}}票</div>
 									</div>
 								</td>
 								<td width="50px">
@@ -78,7 +78,7 @@
 						</table>
 					</div>
 					<div class="alert alert-info">
-						<form action="{% url xinxiangmu toupiao.pk %}" class="addxiangmu" method="POST" style="margin:0;">
+						<form action="{% url xinxiangmu toupiao.pk %}" id="addxiangmu" method="POST" style="margin:0;">
 							{% csrf_token %}
 							<table>
 								<tr>
@@ -99,12 +99,12 @@
 			{% empty %}
 				<div class="well">
 					<div class="alert alert-success">
-						<h2>Hello world!</h2>
+						<h2>现在没有可用的投票</h2>
 					</div>
 					<div class="alert alert-message">
-						This is new blog site.
+						想进行什么投票? 在blog中留言吧!
 					</div>
-					<div class="alert alert-info"><strong>Someone</strong> at <strong>Today</strong></div>
+					<div class="alert alert-info"><strong>Some things go wrong!</strong></div>
 				</div>
 			{% endfor %}
 
@@ -153,8 +153,21 @@ $(function(){
 			}else{
 				alert(data.error_message);
 			}
-		});
+		}, 'json');
+		return false;
 	});
+	$("#addxiangmu").submit(function(){
+		var data = $(this).serializeArray();
+		var url = $(this).attr("action");
+		$.post(url,data,function(data){
+			if(data.success == true){
+				location.href = location.href;
+			}else{
+				alert(data.error_message);
+			}
+		}, 'json');
+		return false;
+	})
 });
 </script>
 </body>

@@ -23,6 +23,7 @@ class TouPiaoXiang(models.Model):
     count = models.IntegerField(_(u"次数"), default=0)
     toupiao = models.ForeignKey(
         TouPiao, verbose_name=_(u'投票'), related_name='xiangmu')
+    ip_address = models.IPAddressField(_(u"IP地址"), default="0.0.0.0")
 
     class Meta:
         verbose_name = _(u'投票项')
