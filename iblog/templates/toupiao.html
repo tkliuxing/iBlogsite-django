@@ -78,7 +78,7 @@
 						</table>
 					</div>
 					<div class="alert alert-info">
-						<form action="{% url xinxiangmu toupiao.pk %}" id="addxiangmu" method="POST" style="margin:0;">
+						<form action="{% url xinxiangmu toupiao.pk %}" class="addxiangmu" method="POST" style="margin:0;">
 							{% csrf_token %}
 							<table>
 								<tr>
@@ -156,7 +156,7 @@ $(function(){
 		}, 'json');
 		return false;
 	});
-	$("#addxiangmu").submit(function(){
+	$(".addxiangmu").submit(function(){
 		var data = $(this).serializeArray();
 		var url = $(this).attr("action");
 		$.post(url,data,function(data){
