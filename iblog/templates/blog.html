@@ -44,7 +44,7 @@
 			<div class="well note date">
 					{% gravatar blog.user.email 40%}
 					<div class="date">
-						<p>{{blog.user}}</p>
+						<p>{{blog.user.get_full_name}}</p>
 						<p>{{blog.create_time|date:"Y-m-d H:i:s"}}</p>
 					</div>
 					{% if request.user.is_authenticated %}
