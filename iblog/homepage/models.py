@@ -10,9 +10,9 @@ class UserProfile(models.Model):
         (2, _(u'保密')),
     )
     user = models.OneToOneField('auth.User')
-    gender = models.IntegerField(default=2, choices=GENDER_CHOICES)
-    description = models.TextField(max_length=2000, null=True, blank=True)
-    show_in_page = models.BooleanField(default=False)
+    gender = models.IntegerField(default=2, choices=GENDER_CHOICES, verbose_name=_(u'性别'))
+    description = models.TextField(max_length=2000, null=True, blank=True, verbose_name=_(u'简介'))
+    show_in_page = models.BooleanField(default=False, verbose_name=_(u'显示在页面中'))
 
     class Meta:
         verbose_name = _(u'用户详情')
