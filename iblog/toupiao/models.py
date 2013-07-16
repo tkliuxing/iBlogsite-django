@@ -49,9 +49,6 @@ class TouPiaoJiLu(models.Model):
         TouPiaoXiang, verbose_name=_(u'投票项'), related_name='xuanzezhe')
 
     class Meta:
-        unique_together = (
-            ('ip_address', 'toupiao'),
-        )
         verbose_name = _(u'投票记录')
         verbose_name_plural = _(u'投票记录')
 
