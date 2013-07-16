@@ -25,34 +25,36 @@ def create_xiangmu(request, toupiao_id):
     if not new_xiangmu:
         return ajax_error(u"请填写项目名称")
     toupiao = get_object_or_404(TouPiao, pk=toupiao_id)
-    toupiaoxiang_name_list = toupiao.xiangmu.all().values_list("name", flat=True)
+    toupiaoxiang_name_list = toupiao.xiangmu.all().values_list(
+        "name", flat=True)
     if new_xiangmu in toupiaoxiang_name_list:
         return ajax_error(u"该项目已存在")
     user_ip = request.META.get("REMOTE_ADDR", "0.0.0.0")
     xiangmu = TouPiaoXiang(
-        toupiao = toupiao,
-        name = request.POST.get('new', '未填写'),
-        ip_address = user_ip,
+        toupiao=toupiao,
+        name=request.POST.get('new', '未填写'),
+        ip_address=user_ip,
     )
     try:
         xiangmu.save()
-    except Exception, e:
+    except Exception as e:
         return ajax_error(unicode(e))
     return ajax_success()
 
 
 def plus_one(request, toupiaoxiang_id):
+    session_key = request.session.session_key
     xiangmu = get_object_or_404(TouPiaoXiang, pk=toupiaoxiang_id)
+    if TouPiaoJiLu.objects.filter(toupiao=xiangmu.toupiao, session_key=session_key):
+        return ajax_error(u"您已经投票过了!")
     jilu = TouPiaoJiLu(
         username="test",
         xiangmu=xiangmu,
         toupiao=xiangmu.toupiao,
-        ip_address=request.META.get('REMOTE_ADDR', '0.0.0.0')
+        ip_address=request.META.get('REMOTE_ADDR', '0.0.0.0'),
+        session_key=session_key,
     )
-    try:
-        jilu.save()
-    except:
-        return ajax_error(u"您已经投票过了!")
-    xiangmu.count = xiangmu.count+1
+    jilu.save()
+    xiangmu.count = xiangmu.count + 1
     xiangmu.save()
     return ajax_success()

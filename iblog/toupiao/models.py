@@ -43,6 +43,7 @@ class TouPiaoXiang(models.Model):
 class TouPiaoJiLu(models.Model):
     username = models.CharField(_(u"用户名"), max_length=50)
     ip_address = models.IPAddressField(_(u"IP地址"))
+    session_key = models.CharField(_(u"会话ID"), max_length=50, null=True, blank=True)
     toupiao = models.ForeignKey(
         TouPiao, verbose_name=_(u'投票'), related_name='canyuzhe')
     xiangmu = models.ForeignKey(
