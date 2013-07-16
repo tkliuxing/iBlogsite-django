@@ -28,10 +28,7 @@ def create_xiangmu(request, toupiao_id):
     toupiaoxiang_name_list = toupiao.xiangmu.all().values_list("name", flat=True)
     if new_xiangmu in toupiaoxiang_name_list:
         return ajax_error(u"该项目已存在")
-    xiangmuip_list = toupiao.xiangmu.all().values_list("ip_address", flat=True)
     user_ip = request.META.get("REMOTE_ADDR", "0.0.0.0")
-    if user_ip in xiangmuip_list:
-        return ajax_error(u"您已经添加过选项了")
     xiangmu = TouPiaoXiang(
         toupiao = toupiao,
         name = request.POST.get('new', '未填写'),
