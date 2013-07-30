@@ -65,11 +65,6 @@ setup(name=PACKAGE_NAME,
       author_email="ouyanghongyu@gmail.com",
       packages=find_packages(),
       cmdclass=cmdclasses,
-      install_requires=[
-          'Django==1.4',
-          'PIL',
-          'simplejson',
-      ],
       include_package_data=True,
       zip_safe=False,
 )

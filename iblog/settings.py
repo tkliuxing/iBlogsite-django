@@ -146,6 +146,7 @@ INSTALLED_APPS = (
     'django_markdown',
     'universaltag',
     'django_gravatar',
+    'django_pygments',
     'iblog.blog',
     'iblog.homepage',
     'iblog.toupiao',
