@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
-{% load i18n md2 universaltag_tags gravatar %}
+{% load i18n md2 universaltag_tags gravatar pygmentify %}
 {% load url from future %}
 {% block title %}首页{% endblock %}
 {% block description %}首页{% endblock %}
 
 {% block head %}
-	{% if request.user.is_authenticated %}
-		{% render_universaltag_head %}
-	{% else %}
-		{% block css %}
-			{{block.super}}
-			<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/django.universaltag.css">
-		{% endblock %}
-	{% endif %}
+	{% block css %}
+	{{block.super}}
+		{% if request.user.is_authenticated %}
+	{% render_universaltag_head %}
+		{% else %}
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/django.universaltag.css">
+		{% endif %}
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/codehighlight.css" />
+	{% endblock %}
 {% endblock %}
 
 {% block container %}
@@ -28,7 +29,7 @@
 				<h4>{{blog.title}}</h4>
 			</div>
 			<div class="alert alert-message">
-				{{blog.content|markdown2:"safe, code-friendly, code-color"}}
+				{{blog.content|markdown2:"code-friendly, code-color"|pygmentify}}
 			</div>
 			<div class="well note date">
 					{% gravatar blog.user.email 40%}
@@ -51,6 +52,7 @@
 			</div>
 			{% if blog.tags.all or request.user.is_authenticated %}
 			<div class="well tags">
+				<h6>Edit Tags:</h6>
 				{% if not request.user.is_authenticated %}
 				<div class="universaltag">
 					<ul class="universaltag ui-sortable">

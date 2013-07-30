@@ -1,6 +1,8 @@
 import psycopg2
 import os
-from wsgi import *
+from wsgi import application
+
+application = application
 
 def create_dbs():
     print("create_dbs: let's go.")
@@ -29,7 +31,6 @@ def create_dbs():
 
 
 if __name__ == '__main__':
-    import sys
     print("create_dbs start")
     create_dbs()
     print("create_dbs all done")

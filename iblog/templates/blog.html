@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
-{% load i18n md2 universaltag_tags gravatar assets %}
+{% load i18n md2 universaltag_tags gravatar pygmentify %}
 {% load url from future %}
 {% block title %}{{blog.title}}{% endblock %}
 {% block description %}{{blog.title}}{% endblock %}
 
 {% block css %}
 	{{block.super}}
+		{% if request.user.is_authenticated %}
+	{% render_universaltag_head %}
+		{% else %}
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/django.universaltag.css">
+		{% endif %}
 	<link rel="stylesheet" href="{{ STATIC_URL }}django_markdown/skins/simple/style.css">
 	<link rel="stylesheet" href="{{ STATIC_URL }}django_markdown/markdown.css">
-	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/django.universaltag.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/codehighlight.css" />
 {% endblock %}
 
 {% block head %}
@@ -39,7 +44,7 @@
 				<h4>{{blog.title}}</h4>
 			</div>
 			<div class="alert alert-message">
-				{{blog.content|markdown2:"safe, code-friendly, code-color"}}
+				{{ blog.content|markdown2:"code-friendly, code-color"|pygmentify }}
 			</div>
 			<div class="well note date">
 					{% gravatar blog.user.email 40%}
@@ -78,6 +83,7 @@
 			</div>
 			{% if blog.tags.all or request.user.is_authenticated %}
 			<div class="well tags">
+				<h6>Edit Tags:</h6>
 				{% if not request.user.is_authenticated %}
 				<div class="universaltag">
 					<ul class="universaltag ui-sortable">
