@@ -28,13 +28,13 @@
 <div class="row">
 	<div class="span4">
 		<div class="well">
-			<h4>Tags:</h4>
+			<h4>{% trans '标签' %}:</h4>
 			{% for tag in tagmanager.all %}
 				<a href="{{ tag.get_absolute_url }}" class="label {{tag_styles|random}}">{{tag}}</a>
 			{% endfor %}
 		</div>
 		<div class="well">
-			<h4>Profile:</h4>
+			<h4>{% trans '简介' %}:</h4>
 			{{ USERPROFILE|markdown2:"safe, code-friendly, code-color" }}
 		</div>
 	</div>
@@ -83,7 +83,7 @@
 			</div>
 			{% if blog.tags.all or request.user.is_authenticated %}
 			<div class="well tags">
-				<h6>Edit Tags:</h6>
+				<h6>{% trans '标签' %}:</h6>
 				{% if not request.user.is_authenticated %}
 				<div class="universaltag">
 					<ul class="universaltag ui-sortable">
@@ -128,7 +128,7 @@
 						<button type="submit" class="btn btn-success">
 							<i class="icon-ok"> </i>&nbsp;&nbsp;{% trans '提交' %}
 						</button>
-						<span class="label label-success" style="margin-left:140px;">Markdown is enabled!</span>
+						<span class="label label-success" style="margin-left:140px;">{% trans 'Markdown语法可用!' %}</span>
 					</p>
 				</form>
 			</div>
