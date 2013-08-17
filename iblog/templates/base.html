@@ -59,9 +59,6 @@
 						{% endif %}
 						{% endblock %}
 					</ul>
-					<form class="navbar-search pull-right">
-						<input type="text" class="search-query" placeholder="Search">
-					</form>
 				</div>
 			</div>
 		</div>
@@ -77,8 +74,6 @@
 	</div>
 	{% block footer %}
 	{% endblock footer %}
-	{% if GA_CODE %}
-		{% include "ga.html" %}
-	{% endif %}
+{% include "ga.html" %}
 </body>
 </html>

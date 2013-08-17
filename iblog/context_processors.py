@@ -13,7 +13,10 @@ def request(request):
 
 
 def google_analytics(request):
-    return {'GA_CODE': getattr(settings, 'GA_CODE', '')}
+    return {
+        'GA_CODE': getattr(settings, 'GA_CODE', ''),
+        'GCSE_CODE': getattr(settings, 'GCSE_CODE', '')
+    }
 
 
 def tag_manager(request):
