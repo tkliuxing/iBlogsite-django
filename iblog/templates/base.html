@@ -6,16 +6,13 @@
 	<title>{{SITE_ENV.SITE_NAME}} - {% block title %}{% endblock %}</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<meta name="description" content="{% block description %}{% endblock %}">
-	<link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" type="text/css" />
 	{% block css %}
-		{% assets filters="pyscss,cssutils,cssrewrite" output="assets/css/main.css" "css/main.scss" %}
-			<link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css" />
+		{% assets filters="pyscss,cssutils,cssrewrite" output="assets/css/main.css" "css/main.scss" "bootstrap/css/bootstrap.min.css" "css/jquery-ui-1.8.23.custom.css" "css/codehighlight.css" "css/django.universaltag.css" "django_markdown/skins/simple/style.css" "django_markdown/markdown.css" %}
+	<link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css" />
 		{% endassets %}
 	{% endblock %}
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-1.8.23.custom.css" type="text/css" />
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.8.0.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script>
-	{# <script src="{{STATIC_URL}}js/less-1.3.0.min.js"></script> #}
 	{% block head %}
 	{% endblock %}
 </head>
@@ -78,6 +75,8 @@
 			<p>本站代码托管于<a href="https://github.com/tkliuxing/iBlogsite-django/" target="_blank">Github</a>,欢迎clone!</p>
 		</footer>
 	</div>
+	{% block footer %}
+	{% endblock footer %}
 	{% if GA_CODE %}
 		{% include "ga.html" %}
 	{% endif %}

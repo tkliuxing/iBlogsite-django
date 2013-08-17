@@ -5,22 +5,18 @@
 {% block description %}{% trans '首页' %}{% endblock %}
 
 {% block head %}
-	{% block css %}
-	{{block.super}}
-		{% if request.user.is_authenticated %}
-	{% render_universaltag_head %}
-		{% else %}
-	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/django.universaltag.css">
-		{% endif %}
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/codehighlight.css" />
-	{% endblock %}
-{% endblock %}
+	{% if request.user.is_authenticated %}
+		{% render_universaltag_head %}
+	{% endif %}
+{% endblock head %}
 
 {% block container %}
+
 <div style="display:none">
 	<a class="bshareDiv" href="http://www.bshare.cn/share">{% trans '分享按钮' %}</a>
 	<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#uuid=&amp;style=3&amp;fs=4&amp;textcolor=#fff&amp;bgcolor=#9C3&amp;text=分享到"></script>
 </div>
+
 <div class="row">
 	<div class="span8">
 		{% for blog in blogs %}
