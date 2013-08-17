@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans '标签' %} - {{ object }}{% endblock %}
 {% block container %}
 <h1>{{ object }}</h1>
 <ul>
