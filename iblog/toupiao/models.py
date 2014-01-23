@@ -38,6 +38,10 @@ class TouPiaoXiang(models.Model):
             return 0
         return self.count * 100 / total
 
+    @property
+    def xiamgmuliebiao(self):
+        return self.toupiao.xiangmu.all().order_by("-id")
+
     def __unicode__(self):
         return self.name
 
