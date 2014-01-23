@@ -1,11 +1,11 @@
 #-*- coding: utf-8 -*-
-from django.views.decorators.csrf import requires_csrf_token
+from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from iblog.toupiao.models import TouPiao, TouPiaoXiang, TouPiaoJiLu
 from iblog.shortcuts.ajax import ajax_success, ajax_error
 
-@requires_csrf_token
+@csrf_protect
 def toupiao(request, template):
     C = {}
     if not request.session.get("guested", None):
