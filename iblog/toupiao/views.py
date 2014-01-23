@@ -1,4 +1,5 @@
 #-*- coding: utf-8 -*-
+from django.core.context_processors import csrf
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from iblog.toupiao.models import TouPiao, TouPiaoXiang, TouPiaoJiLu
@@ -7,6 +8,9 @@ from iblog.shortcuts.ajax import ajax_success, ajax_error
 
 def toupiao(request, template):
     C = {}
+    if not request.session.get("guested", None):
+        request.session.setdefault()
+        request.session["guested"] = True
     toupiaos = TouPiao.objects.all().order_by('-start_date')
     p = Paginator(toupiaos, 10)
     try:
@@ -15,6 +19,7 @@ def toupiao(request, template):
         page = p.page(1)
     C['toupiaos'] = page.object_list
     C['pagination'] = page
+    C.update(csrf(request))
     return render(request, template, C)
 
 
