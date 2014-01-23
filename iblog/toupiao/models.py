@@ -19,6 +19,10 @@ class TouPiao(models.Model):
     def __unicode__(self):
         return self.title
 
+    @property
+    def xiamgmuliebiao(self):
+        return self.xiangmu.all().order_by("-id")
+
 
 class TouPiaoXiang(models.Model):
     name = models.CharField(_(u"项目标题"), max_length=50)
@@ -37,10 +41,6 @@ class TouPiaoXiang(models.Model):
         if total == 0:
             return 0
         return self.count * 100 / total
-
-    @property
-    def xiamgmuliebiao(self):
-        return self.toupiao.xiangmu.all().order_by("-id")
 
     def __unicode__(self):
         return self.name
