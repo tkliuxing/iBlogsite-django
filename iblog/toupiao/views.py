@@ -48,6 +48,8 @@ def create_xiangmu(request, toupiao_id):
 def plus_one(request, toupiaoxiang_id):
     session_key = request.session.session_key
     xiangmu = get_object_or_404(TouPiaoXiang, pk=toupiaoxiang_id)
+    if xiangmu.toupiao.is_cloded:
+        return ajax_error(u"投票已关闭!")
     if TouPiaoJiLu.objects.filter(toupiao=xiangmu.toupiao, session_key=session_key):
         return ajax_error(u"您已经投票过了!")
     jilu = TouPiaoJiLu(

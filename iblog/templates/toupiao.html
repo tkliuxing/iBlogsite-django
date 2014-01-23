@@ -77,7 +77,11 @@
 									</div>
 								</td>
 								<td width="50px">
+									{% if toupiao.is_closed %}
+									<button class="btn btn-small" disabled="disabled">投票</button>
+									{% else %}
 									<button class="btn btn-small plusone" data-url="{% url plusone xiangmu.pk %}">投票</button>
+									{% endif %}
 								</td>
 							</tr>
 						{% endfor %}

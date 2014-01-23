@@ -11,6 +11,7 @@ class TouPiao(models.Model):
     end_date = models.DateField(_(u"结束时间"))
     hidden = models.BooleanField(_(u"隐藏结果"))
     close_add = models.BooleanField(_(u"关闭增加选项"))
+    is_cloded = models.BooleanField(_(u"关闭投票"), default=False)
 
     class Meta:
         verbose_name = _(u'投票')
