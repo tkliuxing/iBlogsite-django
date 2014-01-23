@@ -18,7 +18,7 @@ class Blog(models.Model):
         verbose_name_plural = _(u'文章')
 
     def __unicode__(self):
-        return u"%s : %s" % (self.user, self.title)
+        return u"%s : %s %s" % (self.user.get_full_name(), self.edit_time.strftime("%Y-%m-%d %H:%M"), self.title)
 
     def get_absolute_url(self):
         return reverse('blog', args=[self.pk])

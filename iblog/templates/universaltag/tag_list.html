@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans '标签列表' %}{% endblock %}
 {% block container %}
 <ul>
 	{% for tag in object_list %}

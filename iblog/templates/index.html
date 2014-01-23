@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load i18n md2 universaltag_tags gravatar pygmentify %}
 {% load url from future %}
-{% block title %}首页{% endblock %}
-{% block description %}首页{% endblock %}
+{% block title %}{% trans '首页' %}{% endblock %}
+{% block description %}{% trans '首页' %}{% endblock %}
 
 {% block head %}
 	{% if request.user.is_authenticated %}
@@ -48,7 +48,7 @@
 			</div>
 			{% if blog.tags.all or request.user.is_authenticated %}
 			<div class="well tags">
-				<h6>Edit Tags:</h6>
+				<h6>{% trans '标签' %}:</h6>
 				{% if not request.user.is_authenticated %}
 				<div class="universaltag">
 					<ul class="universaltag ui-sortable">
@@ -105,14 +105,15 @@
 		{% endif %}
 	</div>
 	<div class="span4">
+		<div class="well"><gcse:search></gcse:search></div>
 		<div class="well">
-			<h4>Tags:</h4>
+			<h4>{% trans '标签' %}:</h4>
 			{% for tag in tagmanager.all %}
 				<a href="{{ tag.get_absolute_url }}" class="label {{tag_styles|random}}">{{tag}}</a>
 			{% endfor %}
 		</div>
 		<div class="well">
-			<h4>Profile:</h4>
+			<h4>{% trans '简介' %}:</h4>
 			{{ USERPROFILE|markdown2:"safe, code-friendly, code-color" }}
 		</div>
 	</div>
