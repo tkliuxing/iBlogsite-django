@@ -18,7 +18,6 @@ def toupiao(request, template):
         page = p.page(1)
     C['toupiaos'] = page.object_list
     C['pagination'] = page
-    C.update(csrf(request))
     return render(request, template, C)
 
 
