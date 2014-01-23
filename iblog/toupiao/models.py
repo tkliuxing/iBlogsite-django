@@ -9,6 +9,8 @@ class TouPiao(models.Model):
     description = models.TextField(_(u"描述"), default=_(u"暂无"))
     start_date = models.DateField(_(u"开始时间"))
     end_date = models.DateField(_(u"结束时间"))
+    hidden = models.BooleanField(_(u"隐藏结果"))
+    close_add = models.BooleanField(_(u"关闭增加选项"))
 
     class Meta:
         verbose_name = _(u'投票')

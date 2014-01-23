@@ -53,6 +53,9 @@
 				<div class="well">
 					<div class="alert alert-success">
 						<h2>{{toupiao.title}}</h2>
+						{% if toupiao.hidden %}
+						<span>(本投票结果不公开)</span>
+						{% endif %}
 					</div>
 					<div class="alert alert-message">
 						{{toupiao.description}}
@@ -66,8 +69,11 @@
 								</td>
 								<td width="690px">
 									<div class="progress progress-striped progress-success" style="margin-bottom: 0px;">
-										<div class="bar" id="xm-{{xiangmu.pk}}" style="width: {{xiangmu.percent}}%; color:#000;">
-										&nbsp;&nbsp;{{xiangmu.count}}票</div>
+										{% if toupiao.hidden %}
+											<div class="bar" id="xm-{{xiangmu.pk}}" style="width:0;color:#000;">&nbsp;&nbsp;?票</div>
+										{% else %}
+											<div class="bar" id="xm-{{xiangmu.pk}}" style="width: {{xiangmu.percent}}%; color:#000;">&nbsp;&nbsp;{{xiangmu.count}}票</div>
+										{% endif %}
 									</div>
 								</td>
 								<td width="50px">
@@ -77,6 +83,7 @@
 						{% endfor %}
 						</table>
 					</div>
+					{% if not toupiao.close_add %}
 					<div class="alert alert-info">
 						<form action="{% url xinxiangmu toupiao.pk %}" class="addxiangmu" method="POST" style="margin:0;">
 							{% csrf_token %}
@@ -95,6 +102,7 @@
 							</table>
 						</form>
 					</div>
+					{% endif %}
 				</div>
 			{% empty %}
 				<div class="well">
