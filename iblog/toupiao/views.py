@@ -9,7 +9,6 @@ from iblog.shortcuts.ajax import ajax_success, ajax_error
 def toupiao(request, template):
     C = {}
     if not request.session.get("guested", None):
-        request.session.setdefault()
         request.session["guested"] = True
     toupiaos = TouPiao.objects.all().order_by('-start_date')
     p = Paginator(toupiaos, 10)
