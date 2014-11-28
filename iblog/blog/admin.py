@@ -14,8 +14,8 @@ admin.site.register(Blog, BlogAdmin)
 
 
 class DiscussAdmin(admin.ModelAdmin):
-    list_display = ('blog', 'user')
-    list_filter = ('name',)
+    list_display = ('blog', 'name', 'email')
+    list_filter = ('blog',)
     search_fields = ('blog', 'name', 'user',)
     formfield_overrides = {models.TextField: {'widget': MarkdownWidget}}
 admin.site.register(Discuss, DiscussAdmin)
