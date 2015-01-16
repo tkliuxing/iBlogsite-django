@@ -1,11 +1,12 @@
 #-*- coding: utf-8 -*-
+import datetime
 import urlparse
 from django.utils.translation import ugettext as _
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.paginator import Paginator
-from django.contrib.auth import REDIRECT_FIELD_NAME,logout as auth_logout
+from django.contrib.auth import REDIRECT_FIELD_NAME, logout as auth_logout
 from iblog.blog.models import Blog
 
 
@@ -17,9 +18,12 @@ def homepage(request):
         page = p.page(int(request.GET.get('p', 1)))
     except:
         page = p.page(1)
+    C['news'] = Blog.objects.filter(create_time__gt=datetime.datetime.now()+datetime.timedelta(days=-90))
+    C['news'] = C['news'].order_by('-create_time')
     C['blogs'] = page.object_list
     C['pagination'] = page
     return render_to_response('index.html', C, context_instance=RequestContext(request))
+
 
 def login(request):
     from django.contrib.auth.views import login as login_view
@@ -43,6 +47,7 @@ def login(request):
         'template_name': 'login.html',
     }
     return login_view(request, **defaults)
+
 
 def logout(request):
     auth_logout(request)

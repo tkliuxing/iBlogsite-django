@@ -116,6 +116,14 @@
 			<h4>{% trans '简介' %}:</h4>
 			{{ USERPROFILE|markdown2:"safe, code-friendly, code-color" }}
 		</div>
+		<div class="well">
+			<h4>最近三月文章</h4>
+			<p style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+			{% for blog in news %}
+				{{blog.create_time|date:"Y-m-d"}}&nbsp;<a href="{{blog.get_absolute_url}}" title="{{blog.title}}">{{blog.title}}</a></br>
+			{% endfor %}
+			</p>
+		</div>
 	</div>
 </div>
 {% disqus_num_replies %}
