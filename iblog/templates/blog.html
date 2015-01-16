@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n md2 universaltag_tags gravatar pygmentify %}
+{% load i18n md2 universaltag_tags gravatar pygmentify disqus_tags %}
 {% load url from future %}
 {% block title %}{{blog.title}}{% endblock %}
 {% block description %}{{blog.title}}{% endblock %}
@@ -51,7 +51,7 @@
 					{% endif %}
 					<a class="btn btn-success" href="#note">
 						<i class="icon-comment"> </i>
-						{% trans '评论' %}({{blog.discuess.count}})
+						{% trans '评论' %}
 					</a>
 			</div>
 			<div class="well">
@@ -89,41 +89,12 @@
 			</div>
 			{% endif %}
 		</div>
-		<div class="well note" id="note" name="note">
-			{% for disc in blog.discuess.all %}
-			<div class="well">
-				<div class="note-head">
-					{% gravatar disc.email 40%}
-					<div>
-						<p>{{disc.name}}</p>
-						<p>{{disc.create_time|date:"Y-m-d H:i:s"}}</p>
-					</div>
-					{% if request.user.is_authenticated %}
-					<a href="javascript:;" class="label label-important del-disc" style="float:right;" data-url="{% url disc_del disc.pk %}">
-						<i class="icon-remove"></i>&nbsp;&nbsp;{% trans '删除' %}
-					</a>
-					{% endif %}
-				</div>
-				<div class="note-body">
-					{{disc.content|markdown2:"safe, code-friendly, code-color"}}
-				</div>
-			</div>
-			{% endfor %}
-			<div class="form alert">
-				<form action="." method="post">
-					{% csrf_token %}
-					{{form.as_p}}
-					<p>
-						<button type="submit" class="btn btn-success">
-							<i class="icon-ok"> </i>&nbsp;&nbsp;{% trans '提交' %}
-						</button>
-						<span class="label label-success" style="margin-left:140px;">{% trans 'Markdown语法可用!' %}</span>
-					</p>
-				</form>
-			</div>
+		{% block blog_disqus %}
+		<div class="note" id="note">
+			{% disqus_show_comments %}
 		</div>
+		{% endblock blog_disqus %}
 	</div>
-	<script src="{{ STATIC_URL }}assets/js/discuss.js" type="text/javascript"></script>
 </div>
 {% endblock %}
 

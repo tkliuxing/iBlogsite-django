@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'south',
     'less',
+    'disqus',
     'django_markdown',
     'universaltag',
     'django_gravatar',
