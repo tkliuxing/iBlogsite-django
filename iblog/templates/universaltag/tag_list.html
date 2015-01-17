@@ -7,4 +7,8 @@
 	<li><a href="{{ tag.get_absolute_url }}">{{ tag }}</a></li>
 	{% endfor %}
 </ul>
+	<script>
+		$("#nav-home").toggleClass("active");
+		$("#nav-tags").toggleClass("active");
+	</script>
 {% endblock %}

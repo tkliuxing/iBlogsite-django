@@ -1,4 +1,4 @@
-{% load assets %}
+{% load future assets %}
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -7,7 +7,7 @@
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<meta name="description" content="{% block description %}{% endblock %}">
 	{% block css %}
-		{% assets filters="pyscss,cssutils,cssrewrite" output="assets/css/main.css" "css/main.scss" "bootstrap/css/bootstrap.min.css" "css/jquery-ui-1.8.23.custom.css" "css/codehighlight.css" "css/django.universaltag.css" "django_markdown/skins/simple/style.css" "django_markdown/markdown.css" %}
+		{% assets filters="pyscss,cssutils,cssrewrite" output="assets/css/main.css" "css/main.scss" "bootstrap/css/bootstrap.min.css" "css/jquery-ui-1.8.23.custom.css" "css/codehighlight.css" "css/django.universaltag.css" %}
 	<link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css" />
 		{% endassets %}
 	{% endblock %}
@@ -24,10 +24,16 @@
 				<div class="nav-collapse">
 					<ul class="nav">
 						{% block navbar %}
-						<li class="active">
+						<li id="nav-home" class="active">
 							<a href="/">
 								<i class="icon-home icon-white"></i>
 								首页
+							</a>
+						</li>
+						<li id="nav-tags">
+							<a href="/tags/">
+								<i class="icon-tag icon-white"></i>
+								标签
 							</a>
 						</li>
 						{% if not request.user.is_authenticated %}
@@ -38,8 +44,8 @@
 							</a>
 						</li>
 						{% else %}
-						<li>
-							<a href="/admin/blog/blog/add/">
+						<li id="nav-write">
+							<a href="{% url 'blog_write' %}">
 								<i class="icon-pencil icon-white"></i>
 								写文章
 							</a>

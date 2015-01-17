@@ -1,12 +1,10 @@
 #-*- coding: utf-8 -*-
-from django.utils import simplejson as json
+import json
 from django.http import HttpResponse
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
-from django.core.paginator import Paginator
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from iblog.blog.models import Blog, Discuss
-from iblog.blog.forms import DiscussForm, UserDiscussForm
+from iblog.blog.forms import DiscussForm, UserDiscussForm, BlogForm, BlogEditForm
 
 
 def blog(request, blog):
@@ -34,7 +32,40 @@ def blog(request, blog):
         else:
             C['form'] = form
 
-    return render_to_response('blog.html', C, context_instance=RequestContext(request))
+    return render(request, 'blog.html', C)
+
+
+@login_required
+def write(request):
+    """Write Blog view."""
+    C = {}
+    C['form'] = BlogForm(instance=Blog(user=request.user))
+    if request.method == "POST":
+        form = BlogForm(data=request.POST, instance=Blog(user=request.user))
+        if form.is_valid():
+            tags = form.cleaned_data['tags']
+            blog = form.save()
+            blog.tags.reconstruct(blog, tags)
+            blog.tags.update(frozen=True)
+            return redirect(blog.get_absolute_url())
+        C['form'] = form
+    return render(request, 'write.html', C)
+
+
+@login_required
+def edit(request, blog_id):
+    """Write Blog view."""
+    C = {}
+    blog = get_object_or_404(Blog, pk=blog_id)
+    blog.user = request.user
+    C['form'] = BlogEditForm(instance=blog)
+    if request.method == "POST":
+        form = BlogEditForm(data=request.POST, instance=blog)
+        if form.is_valid():
+            form.save()
+            return redirect(blog.get_absolute_url())
+        C['form'] = form
+    return render(request, 'write.html', C)
 
 
 @login_required

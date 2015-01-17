@@ -7,10 +7,10 @@ South==0.7.6
 cssutils==0.9.10
 jsmin==2.0.3
 django-gravatar2==1.0.6
-django-markdown
+django-markdown==0.8.4
 django-piston==0.2.3
 -e git+https://github.com/thagat/django-less.git@39ec31737304be5cb56205e1aeaeaf415a215a04#egg=django_less-dev
--e git+https://github.com/tkliuxing/django-universaltag.git@8db689873f5ee4e724b93feb5c820ec41a3c3595#egg=django_universaltag-dev
+-e git+https://github.com/tkliuxing/django-universaltag.git@1caacbce86996fd528a2d6e0ec06481b130fd028#egg=django_universaltag-dev
 -e git+https://github.com/tkliuxing/django-pygments.git@724f8016dc7ab16de8674f0851f8625148390800#egg=django_pygments-dev
 markdown2==2.1.0
 psycopg2==2.4.5

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load i18n django_markdown %}
+{% block title %}{% trans '写文章' %}{% endblock %}
+{% block head %}
+	{{ block.super }}
+	{% markdown_media %}
+{% endblock head %}
+{% block container %}
+<div class="row">
+	<div class="span12">
+		<form action="." class="form-horizontal" method="POST">
+			{% csrf_token %}
+			<fieldset>
+				<legend>{% trans '文章' %}</legend>
+				{% csrf_token %}
+				<div class="control-group{% if form.title.errors %} error{% endif %}">
+					<label for="id_title" class="control-label">{{form.title.label}}</label>
+					<div class="controls">
+						{{form.title}}
+						{% if form.title.errors %}
+						<span class="help-inline">{{form.title.errors}}</span>
+						{% endif %}
+					</div>
+				</div>
+				<div class="control-group{% if form.content.errors %} error{% endif %}">
+					<label for="id_content" class="control-label">{{form.content.label}}</label>
+					<div class="controls">
+						{{form.content}}
+						{% if form.content.errors %}
+						<span class="help-inline">{{form.content.errors}}</span>
+						{% endif %}
+					</div>
+				</div>
+				{% if form.tags %}
+				<div class="control-group{% if form.tags.errors %} error{% endif %}">
+					<label for="id_tags" class="control-label">{{form.tags.label}}</label>
+					<div class="controls">
+						{{form.tags}}
+						{% if form.tags.errors %}
+						<span class="help-inline">{{form.tags.errors}}</span>
+						{% endif %}
+					</div>
+				</div>
+				{% endif %}
+				<div class="control-group">
+					<div class="controls">
+						<button type="submit" class="btn btn-success">
+							<i class="icon-ok"> </i>&nbsp;&nbsp;{% trans '提交' %}
+						</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+<script>
+	$("#nav-home").toggleClass("active");
+	$("#nav-write").toggleClass("active");
+</script>
+{% endblock %}

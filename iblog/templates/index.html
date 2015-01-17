@@ -12,11 +12,6 @@
 
 {% block container %}
 
-<div style="display:none">
-	<a class="bshareDiv" href="http://www.bshare.cn/share">{% trans '分享按钮' %}</a>
-	<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#uuid=&amp;style=3&amp;fs=4&amp;textcolor=#fff&amp;bgcolor=#9C3&amp;text=分享到"></script>
-</div>
-
 <div class="row">
 	<div class="span8">
 		{% for blog in blogs %}
@@ -37,12 +32,11 @@
 					<a class="btn btn-danger" href="{% url 'admin:blog_blog_delete' blog.pk %}">
 						{% trans '删除' %}
 					</a>
-					<a class="btn btn-primary" href="{% url 'admin:blog_blog_change' blog.pk %}">
+					<a class="btn btn-primary" href="{% url 'blog_edit' blog.pk %}">
 						{% trans '编辑' %}
 					</a>
 					{% endif %}
 					<a class="btn btn-success" href="{{blog.get_absolute_url}}#disqus_thread">
-						<i class="icon-comment"> </i>
 						{% trans '评论' %}
 					</a>
 			</div>
